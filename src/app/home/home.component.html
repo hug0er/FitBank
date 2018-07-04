@@ -1,3 +1,55 @@
-<p>
-  home works!
-</p>
+<html>
+  <body>
+    <header>
+      <div class="tabs">
+        <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen"/>
+      </div>
+      <mat-tab-group class="tabs">
+        <mat-tab  label="POSICION CONSOLIDADA"> 
+          <div class="blanco">
+            <form class="example-form">
+              <mat-form-field class="center">
+                <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm" >
+                <mat-error *ngIf="idForm.hasError('required')">
+                  La identificacion es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="center">
+                <input matInput placeholder="Nombre del Socio" type="text"[formControl]="nameForm">
+                <mat-error *ngIf="nameForm.hasError('required')">
+                  El Nombre es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+              <button mat-button class="center"> Ingresar</button>
+            </form>
+          </div>
+        </mat-tab>
+        <mat-tab class = "blanco"label="SALDO AHORROS"> 
+          <div class="blanco">
+            <form class="example-form">
+              <mat-form-field class="center">
+                <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
+                <mat-error *ngIf="idForm2.hasError('required')">
+                  La identificacion es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="center">
+                <input matInput placeholder="Nombre del Socio" type="text"[formControl]="nameForm2">
+                <mat-error *ngIf="nameForm2.hasError('required')">
+                  El Nombre es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+              <button mat-button class="center"> Ingresar</button>
+            </form>
+          </div> 
+        </mat-tab>
+        <mat-tab label="SALDO PRESTAMOS"> Content 3 </mat-tab>
+        <mat-tab label="CREACION DE PERSONAS"> Content 3hffh </mat-tab>
+        <mat-tab label="APERTURA DE CUENTAS"> Content nb 3 </mat-tab>
+        <mat-tab label="DEPOSITOS"> Content 3 </mat-tab>
+        <mat-tab label="RETIROS"> Content 3 </mat-tab>
+      </mat-tab-group>
+    </header>
+    
+  </body>
+</html>
