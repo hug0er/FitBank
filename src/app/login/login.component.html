@@ -1,3 +1,21 @@
-<p>
-    login works! kjashajkshasjkahskjah jashjkaskjashs
-</p>
+<!-- <form>
+    <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
+    <input placeholder="Username" type="text" required="">
+    <input placeholder="Password" type="password" required="">
+    <button>Submit</button>
+</form> -->
+
+<form class="example-form">
+    <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
+    <mat-form-field class="center">
+        <input matInput placeholder="Correo" type="text" [formControl]="emailFormControl">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Porfavor ingresa un password válido
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+            El correo es <strong>requerido</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="center"><input matInput placeholder="Contraseña" type="text"></mat-form-field>
+    <button>Ingresar</button>
+</form>
