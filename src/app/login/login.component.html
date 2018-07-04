@@ -4,7 +4,28 @@
     <input placeholder="Password" type="password" required="">
     <button>Submit</button>
 </form> -->
-
+<div class="container" fxLayoutAlign="start stretch" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+    <div fxFlexFill>
+        <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
+        <mat-form-field fxLayout.xs="column">
+            <input matInput placeholder="Correo" [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Correo no válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                El correo es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field fxLayout.xs="column">
+            <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl">
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+                La contraseña es <strong>requerida</strong>
+            </mat-error>
+        </mat-form-field>
+        <button class="center" routerLink='/home' fxFlexFill>Ingresar</button>
+    </div>
+</div>
+<!--
 <form class="example-form">
     <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
     <mat-form-field class="center">
@@ -24,3 +45,4 @@
     </mat-form-field>
     <button class="center" routerLink='/home'>Ingresar</button>
 </form>
+--> 
