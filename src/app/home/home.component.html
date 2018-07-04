@@ -1,182 +1,200 @@
-<html>
-  <body>
-    <header>
-      <div class="tabs">
-        <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen"/>
-      </div>
-      <mat-tab-group class="tabs">
-        <mat-tab  label="POSICION CONSOLIDADA"> 
-          <div class="blanco">
-            <form class="example-form">
-              <mat-form-field class="center">
-                <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm" >
-                <mat-error *ngIf="idForm.hasError('required')">
-                  La identificacion es <strong>requerida</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Nombre del Socio" type="text">
-              </mat-form-field>
-              <button mat-button class="center"> Ingresar</button>
-            </form>
-          </div>
-        </mat-tab>
-        <mat-tab class = "blanco"label="SALDO AHORROS"> 
-          <div class="blanco">
-            <form class="example-form">
-              <mat-form-field class="center">
-                <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
-                <mat-error *ngIf="idForm2.hasError('required')">
-                  La identificacion es <strong>requerida</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Nombre del Socio" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Cuenta">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Producto" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Saldo Disponible" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Saldo por Efectivizar" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Balance bloqueado" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Balance Contable" type="text">
-              </mat-form-field>
-              <button mat-button class="center"> Ingresar</button>
-            </form>
-          </div> 
-        </mat-tab>
-        <mat-tab label="SALDO PRESTAMOS">
-          <div class="blanco">
-            <form class="example-form">
-              <mat-form-field class="center">
-                <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
-                <mat-error *ngIf="idForm2.hasError('required')">
-                  La identificacion es <strong>requerida</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Nombre del Socio" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Cuenta">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Producto" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Saldo Capital Total" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Saldo Capital Vendido" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Intereses Mora + Intereses Prestamo Vencido" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Total Vencido a Pagar" type="text">
-              </mat-form-field>
-              <button mat-button class="center"> Ingresar</button>
-            </form>
-          </div> 
-        </mat-tab>
-        <mat-tab label="CREACION DE PERSONAS">
-          <div class="blanco">
-            <form class="example-form">
-              <mat-form-field class="center">
-                <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
-                <mat-error *ngIf="idForm2.hasError('required')">
-                  La identificacion es <strong>requerida</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Cuenta">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Primer Nombre" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Segundo Nombre" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Apellido Materno" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Apellido Materno" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Fecha Nacimiento" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Lugar de Nacimiento">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Sexo">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Estado Civil">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Numero de Cargas" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <mat-select placeholder="Tipo Vivienda">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Direccion" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="Direccion de E-Mail" type="text">
-              </mat-form-field>
-              <mat-form-field class="center">
-                <input matInput placeholder="NUmero de Telefono Celular" type="text">
-              </mat-form-field>
-              <button mat-button class="center"> Ingresar</button>
-            </form>
-          </div> 
-        </mat-tab>
-        <mat-tab label="APERTURA DE CUENTAS"> Content nb 3 </mat-tab>
-        <mat-tab label="DEPOSITOS"> Content 3 </mat-tab>
-        <mat-tab label="RETIROS"> Content 3 </mat-tab>
-      </mat-tab-group>
-    </header>
-    
-  </body>
-</html>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened class= "example-sidenav"> Hola </mat-sidenav>
+    <mat-sidenav-content>
+<div class="tabs">
+  <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen"/>
+</div>
+<mat-tab-group class="tabs">
+  <mat-tab  label="POSICION CONSOLIDADA"> 
+    <div class="blanco">
+      <form class="example-form">
+        <mat-form-field class="center">
+          <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm" >
+          <mat-error *ngIf="idForm.hasError('required')">
+            La identificacion es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Nombre del Socio" type="text">
+        </mat-form-field>
+        <button mat-button class="center"> Ingresar</button>
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab class = "blanco"label="SALDO AHORROS"> 
+    <div class="blanco">
+      <form class="example-form">
+        <mat-form-field class="center">
+          <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
+          <mat-error *ngIf="idForm2.hasError('required')">
+            La identificacion es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Nombre del Socio" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Cuenta">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Producto" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Saldo Disponible" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Saldo por Efectivizar" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Balance bloqueado" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Balance Contable" type="text">
+        </mat-form-field>
+        <button mat-button class="center"> Ingresar</button>
+      </form>
+    </div> 
+  </mat-tab>
+  <mat-tab label="SALDO PRESTAMOS">
+    <div class="blanco">
+      <form class="example-form">
+        <mat-form-field class="center">
+          <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
+          <mat-error *ngIf="idForm2.hasError('required')">
+            La identificacion es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Nombre del Socio" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Cuenta">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Producto" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Saldo Capital Total" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Saldo Capital Vendido" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Intereses Mora + Intereses Prestamo Vencido" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Total Vencido a Pagar" type="text">
+        </mat-form-field>
+        <button mat-button class="center"> Ingresar</button>
+      </form>
+    </div> 
+  </mat-tab>
+  <mat-tab label="CREACION DE PERSONAS">
+    <div class="blanco">
+      <form class="example-form">
+        <mat-form-field class="center">
+          <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2" >
+          <mat-error *ngIf="idForm2.hasError('required')">
+            La identificacion es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Cuenta">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Primer Nombre" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Segundo Nombre" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Apellido Materno" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Apellido Materno" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="center">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Fecha Nacimiento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+
+
+
+        <mat-form-field class="center">
+          <mat-select placeholder="Lugar de Nacimiento">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Sexo">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Estado Civil">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Numero de Cargas" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Tipo Vivienda">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Direccion" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Direccion de E-Mail" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <input matInput placeholder="Numero de Telefono Celular" type="text">
+        </mat-form-field>
+        <mat-slide-toggle class="center">Independiente</mat-slide-toggle>
+        <mat-form-field class="center">
+          <input matInput placeholder="Tiempo Funcionamiento Negocio (Meses)" type="text">
+        </mat-form-field>
+        <mat-form-field class="center">
+          <mat-select placeholder="Ubicacion del Negocio">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button mat-button class="center"> Ingresar</button>
+      </form>
+    </div> 
+  </mat-tab>
+  <mat-tab label="APERTURA DE CUENTAS"> Content nb 3 </mat-tab>
+  <mat-tab label="DEPOSITOS"> Content 3 </mat-tab>
+  <mat-tab label="RETIROS"> Content 3 </mat-tab>
+</mat-tab-group>
+<p><button mat-button (click)="sidenav.toggle()"> :v </button></p>
+</mat-sidenav-content>
+</mat-sidenav-container>

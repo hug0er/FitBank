@@ -20,6 +20,8 @@ export interface Food {
 
 export class HomeComponent implements OnInit {
 
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date(2020, 0, 1);
 
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
