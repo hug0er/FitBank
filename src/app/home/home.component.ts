@@ -4,7 +4,10 @@ import {ErrorStateMatcher} from '@angular/material/core';
 
 
 
-
+export interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -13,8 +16,18 @@ import {ErrorStateMatcher} from '@angular/material/core';
 })
 
 
+
+
 export class HomeComponent implements OnInit {
 
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date(2020, 0, 1);
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
   constructor() { }
 
   ngOnInit() {

@@ -16,7 +16,11 @@
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
+<<<<<<< HEAD
     "@angular/elements": "^6.0.7",
+=======
+    "@angular/flex-layout": "^6.0.0-beta.16",
+>>>>>>> 051f08ff5bfc692d0c756c98e238c8bef8943381
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/material": "^6.3.2",

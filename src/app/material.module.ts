@@ -8,7 +8,11 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTabsModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +24,11 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatSidenavModule,
@@ -30,7 +38,11 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule {}
