@@ -1,14 +1,8 @@
-<!-- <form>
-    <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
-    <input placeholder="Username" type="text" required="">
-    <input placeholder="Password" type="password" required="">
-    <button>Submit</button>
-</form> -->
 <div class="container" fxLayoutAlign="start stretch" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
     <div fxFlexFill>
         <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
         <mat-form-field fxLayout.xs="column">
-            <input matInput placeholder="Correo" [formControl]="emailFormControl">
+            <input matInput placeholder="Correo" [formControl]="emailFormControl" [(ngModel)]="User['contrasena']">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Correo no válido
             </mat-error>
@@ -17,37 +11,11 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field fxLayout.xs="column">
-            <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl">
+            <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="User['name']">
             <mat-error *ngIf="passwordFormControl.hasError('required')">
                 La contraseña es <strong>requerida</strong>
             </mat-error>
         </mat-form-field>
-        <button class="center" routerLink='/home' fxFlexFill>Ingresar</button>
+        <button class="center" (click)="login()" fxFlexFill>Ingresar</button>
     </div>
 </div>
-<!--
-<form class="example-form">
-    <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
-    <mat-form-field class="center">
-        <input matInput placeholder="Correo" [formControl]="emailFormControl" id="usuario" [(ngModel)]="User['name']">
-        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Correo no válido
-        </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-            El correo es <strong>requerido</strong>
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field class="center">
-        <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" id="contrasena" [(ngModel)]="User['category']">
-        <mat-error *ngIf="passwordFormControl.hasError('required')">
-            La contraseña es <strong>requerida</strong>
-        </mat-error>
-    </mat-form-field>
-<<<<<<< HEAD
-    <button class="center" (click)="login()">Ingresar</button>
-</form>
-=======
-    <button class="center" routerLink='/home'>Ingresar</button>
-</form>
---> 
->>>>>>> 051f08ff5bfc692d0c756c98e238c8bef8943381

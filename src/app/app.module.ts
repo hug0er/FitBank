@@ -10,6 +10,7 @@ import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApiService} from './api.service';
 import { HttpModule} from '@angular/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpModule} from '@angular/http';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    FlexLayoutModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

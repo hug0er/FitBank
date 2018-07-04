@@ -25,12 +25,11 @@ export class LoginComponent implements OnInit {
   ]);
   
   login () {
-  //   this.apiService.loginProvider(this.User).then((data : any) =>{
-  //     localStorage.setItem('id_token', data);
-  //     this.router.navigate(['/home'])
-  //     },(err) =>{
-  //       })
-  // }
-  this.router.navigate(['/home'])
+    this.apiService.loginProvider(this.User).then((data : any) =>{
+      localStorage.setItem('id_token', data);
+      this.router.navigate(['/home'])
+      },(err) =>{
+        this.router.navigate(['/home'])
+        })
   }
 }
