@@ -39,6 +39,20 @@
                   El Nombre es <strong>requerido</strong>
                 </mat-error>
               </mat-form-field>
+              <mat-form-field class="center">
+                <mat-select placeholder="Favorite food">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="center">
+                <input matInput placeholder="Nombre del Socio" type="text"[formControl]="nameForm2">
+                <mat-error *ngIf="nameForm2.hasError('required')">
+                  El Nombre es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+
               <button mat-button class="center"> Ingresar</button>
             </form>
           </div> 
