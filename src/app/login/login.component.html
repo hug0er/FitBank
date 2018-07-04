@@ -10,12 +10,17 @@
     <mat-form-field class="center">
         <input matInput placeholder="Correo" type="text" [formControl]="emailFormControl">
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Porfavor ingresa un password válido
+            Porfavor ingresa un correo válido
         </mat-error>
         <mat-error *ngIf="emailFormControl.hasError('required')">
             El correo es <strong>requerido</strong>
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="center"><input matInput placeholder="Contraseña" type="text"></mat-form-field>
-    <button>Ingresar</button>
+    <mat-form-field class="center">
+        <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl">
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                La contraseña es <strong>requerida</strong>
+        </mat-error>
+    </mat-form-field>
+    <button routerLink='/home'>Ingresar</button>
 </form>
