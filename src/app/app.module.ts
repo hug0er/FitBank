@@ -8,7 +8,8 @@ import { MatInputModule, } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {ApiService} from './api.service';
+import { HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
