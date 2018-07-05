@@ -2,7 +2,7 @@
     <div fxFlexFill>
         <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
         <mat-form-field fxLayout.xs="column">
-            <input matInput placeholder="Correo" [formControl]="emailFormControl" [(ngModel)]="User['contrasena']">
+            <input matInput placeholder="Correo" [formControl]="emailFormControl" [(ngModel)]="usuario">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Correo no válido
             </mat-error>
@@ -11,7 +11,7 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field fxLayout.xs="column">
-            <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="User['name']">
+            <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="contrasena">
             <mat-error *ngIf="passwordFormControl.hasError('required')">
                 La contraseña es <strong>requerida</strong>
             </mat-error>

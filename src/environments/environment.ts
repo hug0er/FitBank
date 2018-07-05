@@ -7,9 +7,8 @@ export const environment = {
   production: false,
 
   // URL of development API
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'https://ofimovil.fit-bank.com'
 };
-
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

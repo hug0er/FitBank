@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import { Servicios } from '../funciones/encryptar'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,8 +11,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-  User ={};
-  constructor(public apiService : ApiService,
+  usuario : string;
+  contrasena : string;
+  constructor(public apiService : ApiService, public servicios : Servicios,
   private router: Router) {
    }
 
@@ -25,11 +28,14 @@ export class LoginComponent implements OnInit {
   ]);
   
   login () {
-    this.apiService.loginProvider(this.User).then((data : any) =>{
-      localStorage.setItem('id_token', data);
+    let User = {"usuario": this.usuario, "contrasena" : this.servicios.toAES(this.contrasena), "desencriptar" : "1" }
+    this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
+      localStorage.setItem('id_token', data.token);
+      localStorage.setItem('user', User.usuario);
       this.router.navigate(['/home'])
       },(err) =>{
-        this.router.navigate(['/home'])
+        console.log('no pase');
+        console.log(err);
         })
   }
 }

@@ -9,8 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApiService} from './api.service';
-import { HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { Servicios } from './funciones/encryptar';
+
 
 @NgModule({
   declarations: [
@@ -26,10 +28,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    FlexLayoutModule
+    HttpClientModule,
+    FlexLayoutModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, Servicios],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
