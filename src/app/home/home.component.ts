@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-
-
+import {FormPOSICIONCONSOLIDADAComponent} from '../form-posicion-consolidada/form-posicion-consolidada.component';
+import {FormSALDOAHORROSComponent} from '../form-saldo-ahorros/form-saldo-ahorros.component';
+import {FormSALDOPRESTAMOSComponent} from '../form-saldo-prestamos/form-saldo-prestamos.component';
+import {FormCREACIONDEPERSONASComponent} from '../form-creacion-de-personas/form-creacion-de-personas.component'
+import {FormAPERTURADECUENTASComponent} from '../form-apertura-de-cuentas/form-apertura-de-cuentas.component';
+import {FormDEPOSITOSComponent} from '../form-depositos/form-depositos.component';
+import {FormRETIROSComponent} from '../form-retiros/form-retiros.component';
 
 export interface Food {
   value: string;
