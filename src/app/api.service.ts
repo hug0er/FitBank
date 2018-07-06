@@ -23,6 +23,11 @@ export class ApiService {
         return header
         }
 
+  createToken(token){
+    let header = this.createHeader().append('Authorization','Bearer ' + token);
+    return header;
+  }
+
   public loginProvider(values, localUrl) {
       return new Promise((resolve, reject) => {
       this.http.post(API_URL+localUrl, values, {headers: this.header, params : values}).subscribe(
@@ -33,4 +38,36 @@ export class ApiService {
         })
       })
     }
+    public postProvider(localUrl, token) {
+      return new Promise((resolve, reject) => {
+      this.http.get(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
+        data=>{
+          resolve(data)
+        },err =>{
+          reject(err) 
+        })
+      })
+    }
+
+  public getProvider(localUrl, token, value) {
+    return new Promise((resolve, reject) => {
+    this.http.get(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
+      data=>{
+        resolve(data)
+      },err =>{
+        reject(err) 
+      })
+    })
   }
+  
+  public putProvider(localUrl, token) {
+    return new Promise((resolve, reject) => {
+    this.http.put(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
+      data=>{
+        resolve(data)
+      },err =>{
+        reject(err) 
+      })
+    })
+  }   
+}
