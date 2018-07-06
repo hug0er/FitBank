@@ -34,8 +34,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user', User.usuario);
       this.router.navigate(['/home'])
       },(err) =>{
-        console.log('no pase');
-        console.log(err);
         })
   }
 }

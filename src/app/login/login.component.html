@@ -4,34 +4,6 @@
     </div>
     <form class="example-form">
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Correo" [formControl]="emailFormControl" [(ngModel)]="User['contrasena']">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Correo no válido
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-                El correo es <strong>requerido</strong>
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field fxFlexFill>
-                <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="User['name']">
-                <mat-error *ngIf="passwordFormControl.hasError('required')">
-                    La contraseña es <strong>requerida</strong>
-                </mat-error>
-        </mat-form-field>
-        <button class="center" (click)="login()" fxFlexFill>Ingresar</button>
-    </form>
-</div>
-
-
-
-
-
-
-
-<!-- <div class="container" fxLayoutAlign="start stretch" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
-    <div fxFlexFill>
-        <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
-        <mat-form-field fxLayout.xs="column">
             <input matInput placeholder="Correo" [formControl]="emailFormControl" [(ngModel)]="usuario">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Correo no válido
@@ -40,12 +12,12 @@
                 El correo es <strong>requerido</strong>
             </mat-error>
         </mat-form-field>
-        <mat-form-field fxLayout.xs="column">
+        <mat-form-field fxFlexFill>
             <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="contrasena">
             <mat-error *ngIf="passwordFormControl.hasError('required')">
                 La contraseña es <strong>requerida</strong>
             </mat-error>
         </mat-form-field>
         <button class="center" (click)="login()" fxFlexFill>Ingresar</button>
-    </div>
-</div> -->
+    </form>
+</div>
