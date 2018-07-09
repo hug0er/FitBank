@@ -11,7 +11,7 @@
         </mat-form-field>
         <div div fxLayout="row" fxLayoutAlign="start start" *ngIf="cedula">
             <button fxFlex="20" mat-icon-button class="center" (click)="posicionConsolidada()"><mat-icon>check_circle</mat-icon></button>
-            <button fxFlex="20" mat-icon-button class="center"><mat-icon>cancel</mat-icon></button>
+            <button fxFlex="20" mat-icon-button class="center" (click)="close()"><mat-icon>cancel</mat-icon></button>
         </div>
     </form>
 </div>

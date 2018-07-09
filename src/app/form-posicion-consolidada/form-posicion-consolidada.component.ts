@@ -28,7 +28,15 @@ posicionConsolidada(){
       this.datos = data.array
       console.log(data.array[0].ccuenta);
          }, (err) => {
+           this.datos = [];
+           this.nombre = ''
            console.log(err)
     })
+  }
+  close(){
+    this.datos = []
+    this.nombre = ''
+    this.idForm.reset()
+    this.idForm.clearValidators()
   }
 }
