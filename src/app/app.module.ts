@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { MatInputModule, } from '@angular/material'
+import { MatInputModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';

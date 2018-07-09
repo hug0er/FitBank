@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import {MediaMatcher} from '@angular/cdk/layout';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormPOSICIONCONSOLIDADAComponent} from '../form-posicion-consolidada/form-posicion-consolidada.component';
@@ -20,22 +21,24 @@ export interface Food {
   styleUrls: ['./home.component.css']
 })
 
-
-
-
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnDestroy {
+  mobileQuery: MediaQueryList;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
-
+ private _mobileQueryListener: () => void;
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-  constructor() { }
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 1200px)');
+      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+      this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
-  ngOnInit() {
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   idForm = new FormControl('', [
     Validators.required,
@@ -50,4 +53,3 @@ export class HomeComponent implements OnInit {
     Validators.required,
   ]);
 }
-  

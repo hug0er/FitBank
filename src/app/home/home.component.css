@@ -1,8 +1,6 @@
 .tabs{
     font-size: 15px;
-    margin-left: -10px;
-    margin-right: 18px;
-    margin-top: -10px;
+    position: static;
     /* background: repeating-linear-gradient(#18aa8b, #18aa8b 19.9%, #ffffff 10.1%, #ffffff 100%) */
 }
 .cabecera{
@@ -18,19 +16,20 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 175px;
+    width: 150px;
     /* background-color: #18aa8b; */
 }
 .imagen2{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 160px;
+    width: 150px;
 }
 .example-sidenav {
   align-items: center;
   justify-content: center;
   width: 200px;
+  margin-top: -60px;
 }
 
 .example-form{
@@ -52,12 +51,14 @@
 }
 /**sdiedke nav*/
 .example-container {
-    position: absolute;
-    top: 50px;
-    bottom: 60px;
-    left: 0;
-    right: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
   .example-header {
     position: fixed;
