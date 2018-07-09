@@ -12,6 +12,7 @@ import {ApiService} from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Servicios } from './funciones/encryptar';
+import { Alerta } from './funciones/alerta';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { Servicios } from './funciones/encryptar';
     HttpClientModule,
     FlexLayoutModule,
   ],
-  providers: [ApiService, Servicios],
+  providers: [ApiService, Servicios,Alerta],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

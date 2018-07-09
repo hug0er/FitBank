@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import { Servicios } from '../funciones/encryptar'
+import { Servicios } from '../funciones/encryptar';
+import { Alerta } from '../funciones/alerta';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   usuario : string;
   contrasena : string;
   constructor(public apiService : ApiService, public servicios : Servicios,
-  private router: Router) {
+  private router: Router, private alerta:Alerta) {
    }
 
   ngOnInit() {
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
     this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
       localStorage.setItem('id_token', data.token);
       localStorage.setItem('user', User.usuario);
-      this.router.navigate(['/home'])
+      this.alerta.presentarAlerta("Éxito");
+      this.router.navigate(['/home']);
       },(err) =>{
         })
   }
