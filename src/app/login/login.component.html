@@ -4,12 +4,9 @@
     </div>
     <form class="example-form">
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Correo" [formControl]="emailFormControl" [(ngModel)]="usuario">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Correo no válido
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-                El correo es <strong>requerido</strong>
+            <input matInput placeholder="Usuario" [formControl]="usernameFormControl" [(ngModel)]="usuario">
+            <mat-error *ngIf="usernameFormControl.hasError('required')">
+                El usuario es <strong>requerido</strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>

@@ -20,15 +20,6 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   idForm = new FormControl('', [
     Validators.required,
   ]);
-  nameForm = new FormControl('', [
-    Validators.required,
-  ]);
-  idForm2 = new FormControl('', [
-    Validators.required,
-  ]);
-  nameForm2 = new FormControl('', [
-    Validators.required,
-  ]);
 
 posicionConsolidada(){
     let envio = {"usuario": localStorage.getItem('user'), "id" : this.cedula}

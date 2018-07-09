@@ -1,10 +1,10 @@
 .tabs{
-    background-color: #18aa8b;
+    /* background-color: #18aa8b; */
     font-size: 15px;
 }
 
 .imagen-header{
-  background-color: #18aa8b;
+  /* background-color: #18aa8b; */
   padding: 0%;
   margin-top: 0px;
 }
@@ -55,7 +55,7 @@
     align-items: center;
     justify-content: center;
     width: 200px;
-    background: #18aa8b;
+    /* background: #18aa8b; */
   }
   
   .example-header {

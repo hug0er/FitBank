@@ -9,7 +9,7 @@
         <mat-form-field fxFlexFill>
             <input matInput placeholder="Nombre del Socio" type="text" disabled [(ngModel)]="nombre" name="nombre">
         </mat-form-field>
-        <div div fxLayout="row" fxLayoutAlign="start start">
+        <div div fxLayout="row" fxLayoutAlign="start start" *ngIf="cedula">
             <button fxFlex="20" mat-icon-button class="center" (click)="posicionConsolidada()"><mat-icon>check_circle</mat-icon></button>
             <button fxFlex="20" mat-icon-button class="center"><mat-icon>cancel</mat-icon></button>
         </div>
