@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {ApiService} from '../api.service'
+import {GenerarCartasComponent} from '../generar-cartas/generar-cartas.component'
 
 @Component({
   selector: 'app-form-posicion-consolidada',
@@ -8,8 +10,10 @@ import {ErrorStateMatcher} from '@angular/material/core';
   styleUrls: ['./form-posicion-consolidada.component.css']
 })
 export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
-
-  constructor() { }
+  nombre : string
+  datos : any
+  cedula : string;
+  constructor(public apiService : ApiService) { }
 
   ngOnInit() {
   }
@@ -25,4 +29,15 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   nameForm2 = new FormControl('', [
     Validators.required,
   ]);
+
+posicionConsolidada(){
+    let envio = {"usuario": localStorage.getItem('user'), "id" : this.cedula}
+    this.apiService.postProvider('/queryAllAccounts', localStorage.getItem('id_token'),envio).then((data : any)=>{
+      this.nombre = data.clientName
+      this.datos = data.array
+      console.log(data.array[0].ccuenta);
+         }, (err) => {
+           console.log(err)
+    })
+  }
 }

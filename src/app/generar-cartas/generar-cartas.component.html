@@ -1,0 +1,35 @@
+<mat-card *ngIf="dato.subsistema == 04" class="cards">
+    <mat-card-header>
+        <mat-card-title>{{dato.dproducto}}</mat-card-title>
+        <mat-card-subtitle><strong>Estado: </strong>{{dato.estado}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p><strong>Número de cuenta: </strong>{{dato.ccuenta}}</p>
+        <!-- <p><strong>Usuario: </strong>Hugo Betancourt</p> -->
+        <p><strong>Total: </strong>{{dato.accounting}} {{dato.cmoneda}}</p>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="dato.subsistema == 05" class="cards">
+    <mat-card-header>
+        <mat-card-title>{{dato.dproducto}}</mat-card-title>
+        <mat-card-subtitle><strong>Estado: </strong>{{dato.estado}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p><strong>Número de cuenta: </strong>{{dato.ccuenta}}</p>
+        <p><strong>Usuario: </strong>Hugo Betancourt</p>
+        <!-- <p><strong>Total: </strong>dato.accounting {{dato.cmoneda}}</p> -->
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="dato.subsistema == 06" class="cards">
+    <mat-card-header>
+        <mat-card-title>{{dato.dproducto}}</mat-card-title>
+        <mat-card-subtitle><strong>Estado: </strong>{{dato.estado}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p><strong>Número de cuenta: </strong>{{dato.ccuenta}}</p>
+        <p><strong>Usuario: </strong>Hugo Betancourt</p>
+        <p><strong>Total: </strong>dato.total {{dato.cmoneda}}</p>
+    </mat-card-content>
+</mat-card>

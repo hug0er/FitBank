@@ -9,28 +9,30 @@ const API_URL = environment.apiUrl;
 
 @Injectable()
 export class ApiService {
-  header :HttpHeaders
-
   constructor( private http: HttpClient) {
 
   }
   createHeader () {
-    let header = new HttpHeaders();
-         header = header.append('Content-Type','application/json');
-         header = header.append("Access-Control-Allow-Origin", "*");
-         header = header.append("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-         header = header.append("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Access-Control-Allow-Origin, Access-Control-Allow-Methods");
+    var header = new HttpHeaders();
+         header = header.set('Content-Type','application/json');
+         header = header.set("Access-Control-Allow-Origin", "*");
+         header = header.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+         console.log(header);
         return header
         }
 
   createToken(token){
-    let header = this.createHeader().append('Authorization','Bearer ' + token);
+    
+    let header = this.createHeader();
+    console.log(token);
+    header = header.set('Authorization','Bearer ' + token);
+    console.log(header);
     return header;
   }
 
   public loginProvider(values, localUrl) {
       return new Promise((resolve, reject) => {
-      this.http.post(API_URL+localUrl, values, {headers: this.header, params : values}).subscribe(
+      this.http.post(API_URL+localUrl, values, {headers: this.createHeader(), params : values}).subscribe(
         data=>{
           resolve(data)
         },err =>{
@@ -38,9 +40,9 @@ export class ApiService {
         })
       })
     }
-    public postProvider(localUrl, token) {
+    public postProvider(localUrl, token, value) {
       return new Promise((resolve, reject) => {
-      this.http.get(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
+      this.http.post(API_URL+localUrl, value, {headers: this.createToken(token), params : value}).subscribe(
         data=>{
           resolve(data)
         },err =>{
@@ -49,25 +51,25 @@ export class ApiService {
       })
     }
 
-  public getProvider(localUrl, token, value) {
-    return new Promise((resolve, reject) => {
-    this.http.get(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
-      data=>{
-        resolve(data)
-      },err =>{
-        reject(err) 
-      })
-    })
-  }
+  // public getProvider(localUrl, token, value) {
+  //   return new Promise((resolve, reject) => {
+  //   this.http.get(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
+  //     data=>{
+  //       resolve(data)
+  //     },err =>{
+  //       reject(err) 
+  //     })
+  //   })
+  // }
   
-  public putProvider(localUrl, token) {
-    return new Promise((resolve, reject) => {
-    this.http.put(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
-      data=>{
-        resolve(data)
-      },err =>{
-        reject(err) 
-      })
-    })
-  }   
+  // public putProvider(localUrl, token) {
+  //   return new Promise((resolve, reject) => {
+  //   this.http.put(API_URL+localUrl, {headers: this.createToken(token)}).subscribe(
+  //     data=>{
+  //       resolve(data)
+  //     },err =>{
+  //       reject(err) 
+  //     })
+  //   })
+  // }   
 }

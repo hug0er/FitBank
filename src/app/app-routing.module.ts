@@ -10,6 +10,9 @@ import {FormCREACIONDEPERSONASComponent} from './form-creacion-de-personas/form-
 import {FormAPERTURADECUENTASComponent} from './form-apertura-de-cuentas/form-apertura-de-cuentas.component';
 import {FormDEPOSITOSComponent} from './form-depositos/form-depositos.component';
 import {FormRETIROSComponent} from './form-retiros/form-retiros.component';
+import {GenerarCartasComponent} from './generar-cartas/generar-cartas.component'
+import {MatCardModule} from '@angular/material/card';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -24,7 +27,7 @@ const routes: Routes = [
     [RouterModule.forRoot(routes)]
   ],
   declarations: [],
-  exports: [ RouterModule ]
+  exports: [ RouterModule, MatCardModule ]
 })
 export class AppRoutingModule { 
 
@@ -39,6 +42,7 @@ export const routingComponents = [LoginComponent,
   FormCREACIONDEPERSONASComponent,
   FormAPERTURADECUENTASComponent,
   FormDEPOSITOSComponent,
-  FormRETIROSComponent
+  FormRETIROSComponent,
+  GenerarCartasComponent
 ]
 
