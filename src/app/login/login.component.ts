@@ -5,6 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,9 +33,11 @@ export class LoginComponent implements OnInit {
     this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
       localStorage.setItem('id_token', data.token);
       localStorage.setItem('user', User.usuario);
-      this.alerta.presentarAlerta("Éxito");
+      this.alerta.presentarAlerta('Ingresado correctamente');
       this.router.navigate(['/home']);
       },(err) =>{
+        console.log(err)
+        this.alerta.presentarAlerta(err.error.mensajeUsuario)
         })
   }
 }

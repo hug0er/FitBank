@@ -3,6 +3,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material/core';
 import {ApiService} from '../api.service'
 import {GenerarCartasComponent} from '../generar-cartas/generar-cartas.component'
+import {Alerta} from '../funciones/alerta' 
 
 @Component({
   selector: 'app-form-posicion-consolidada',
@@ -13,7 +14,7 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   nombre : string
   datos : any
   cedula : string;
-  constructor(public apiService : ApiService) { }
+  constructor(public apiService : ApiService, public alerta: Alerta) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,7 @@ posicionConsolidada(){
          }, (err) => {
            this.datos = [];
            this.nombre = ''
+           this.alerta.presentarAlerta(err.error.mensajeUsuario)
            console.log(err)
     })
   }
@@ -38,5 +40,6 @@ posicionConsolidada(){
     this.nombre = ''
     this.idForm.reset()
     this.idForm.clearValidators()
+    
   }
 }
