@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./generar-cartas.component.css']
 })
 export class GenerarCartasComponent implements OnInit {
+  usuario = localStorage.getItem('user')
   @Input() dato
   constructor() { }
 
