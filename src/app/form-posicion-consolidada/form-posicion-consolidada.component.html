@@ -9,10 +9,10 @@
         <mat-form-field fxFlexFill>
             <input matInput placeholder="Nombre del Socio" type="text" disabled [(ngModel)]="nombre" name="nombre">
         </mat-form-field>
-        <div div fxLayout="row" fxLayoutAlign="start start" *ngIf="cedula">
-            <button fxFlex="20" mat-icon-button class="center" (click)="posicionConsolidada()"><mat-icon>check_circle</mat-icon></button>
-            <button fxFlex="20" mat-icon-button class="center" (click)="close()"><mat-icon>cancel</mat-icon></button>
-        </div>
     </form>
+    <app-generar-cartas *ngFor="let dato of datos" [dato]="dato"></app-generar-cartas>
 </div>
-<app-generar-cartas *ngFor="let dato of datos" [dato]="dato"></app-generar-cartas>
+<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="cedula" class="float">
+    <button mat-fab (click)="posicionConsolidada()" class="myfloat" color="primary"><mat-icon color="white">check_circle</mat-icon></button>
+    <button mat-fab (click)="close()" class="myfloat" color="warn"><mat-icon>cancel</mat-icon></button>
+</div>
