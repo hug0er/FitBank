@@ -23,6 +23,7 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   ]);
 
 posicionConsolidada(){
+  if (!this.alerta.revisarInternet()){
     let envio = {"usuario": localStorage.getItem('user'), "id" : this.cedula}
     this.apiService.postProvider('/queryAllAccounts', localStorage.getItem('id_token'),envio).then((data : any)=>{
       this.nombre = data.clientName
@@ -35,6 +36,7 @@ posicionConsolidada(){
            console.log(err)
     })
   }
+}
   close(){
     this.datos = []
     this.nombre = ''

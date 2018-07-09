@@ -14,4 +14,14 @@ export class Alerta{
         this.snackBar.open(msg,null,config);
     }
 
+    revisarInternet(){
+        if (!navigator.onLine){
+            this.presentarAlerta('No tienes conexión a Internet')
+            return true
+        }else{
+            return false
+        }
+        
+    }
+
 }

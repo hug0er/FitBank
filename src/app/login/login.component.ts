@@ -29,15 +29,17 @@ export class LoginComponent implements OnInit {
   ]);
   
   login () {
-    let User = {"usuario": this.usuario, "contrasena" : this.servicios.toAES(this.contrasena), "desencriptar" : "1" }
-    this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
-      localStorage.setItem('id_token', data.token);
-      localStorage.setItem('user', User.usuario);
-      this.alerta.presentarAlerta('Ingresado correctamente');
-      this.router.navigate(['/home']);
-      },(err) =>{
-        console.log(err)
-        this.alerta.presentarAlerta(err.error.mensajeUsuario)
-        })
+    if (!this.alerta.revisarInternet()){
+      let User = {"usuario": this.usuario, "contrasena" : this.servicios.toAES(this.contrasena), "desencriptar" : "1" }
+      this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
+        localStorage.setItem('id_token', data.token);
+        localStorage.setItem('user', User.usuario);
+        this.alerta.presentarAlerta('Ingresado correctamente');
+        this.router.navigate(['/home']);
+        },(err) =>{
+          console.log(err)
+          this.alerta.presentarAlerta(err.error.mensajeUsuario)
+          })
+    }
   }
 }
