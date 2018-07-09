@@ -4,7 +4,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #snav mode="side" opened class="example-sidenav">
+    <mat-sidenav #snav mode="side" closed class="example-sidenav">
       <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" />
         <button mat-button><mat-icon>account_box</mat-icon> Posición Consolidada</button>
         <button mat-button><mat-icon>attach_money</mat-icon> Saldo Ahorros</button>
@@ -39,6 +39,5 @@
                 <app-form-retiros></app-form-retiros>
             </mat-tab>
         </mat-tab-group>
-        <p><button mat-button (click)="sidenav.toggle()"> :v </button></p>
     </mat-sidenav-content>
 </mat-sidenav-container>
