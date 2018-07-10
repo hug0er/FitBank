@@ -9,6 +9,7 @@ import {FormCREACIONDEPERSONASComponent} from '../form-creacion-de-personas/form
 import {FormAPERTURADECUENTASComponent} from '../form-apertura-de-cuentas/form-apertura-de-cuentas.component';
 import {FormDEPOSITOSComponent} from '../form-depositos/form-depositos.component';
 import {FormRETIROSComponent} from '../form-retiros/form-retiros.component';
+import {Router, ActivatedRoute} from '@angular/router';
 
 export interface Food {
   value: string;
@@ -22,17 +23,19 @@ export interface Food {
 })
 
 export class HomeComponent implements OnDestroy {
+  eventText = '';
   mobileQuery: MediaQueryList;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
+  selectedIndex: number=0;
  private _mobileQueryListener: () => void;
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 1200px)');
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router) {
+    this.mobileQuery = media.matchMedia('(max-width: 2000px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
   }
@@ -52,4 +55,19 @@ export class HomeComponent implements OnDestroy {
   nameForm2 = new FormControl('', [
     Validators.required,
   ]);
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
+  move(num){
+    this.selectedIndex=num;
+  }
+  selectedIndexChange(val){
+    this.selectedIndex=val;
+  }
+
+  izquierda(evt) {
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.selectedIndex+=-1 : this.selectedIndex+=1):'';
+}
 }

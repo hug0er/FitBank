@@ -1,30 +1,38 @@
-<div [class.example-is-mobile]="mobileQuery.matches" >
+<div [class.example-is-mobile]="mobileQuery.matches">
 <mat-sidenav-container class="example-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" closed class="example-sidenav">
-      <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" />
-        <button mat-button><mat-icon>account_box</mat-icon> Posición Consolidada</button>
-        <button mat-button><mat-icon>attach_money</mat-icon> Saldo Ahorros</button>
-        <button mat-button><mat-icon>money_off</mat-icon> Saldo Préstamos</button>
-        <button mat-button><mat-icon>accessibility_new</mat-icon> Creación de Personas</button>
-        <button mat-button><mat-icon>account_balance</mat-icon> Apertura de Cuentas</button>
-        <button mat-button><mat-icon>money</mat-icon> Depósitos</button>
-        <button mat-button><mat-icon>money</mat-icon> Retiros </button>
-        <button mat-button><mat-icon>close</mat-icon> Cerrar Sesión </button>
+      <div class="borde"><img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" /></div>
+        <button mat-button (click)="move(0)"><mat-icon>account_box</mat-icon> Posición Consolidada</button>
+        <button mat-button (click)="move(1)"><mat-icon>attach_money</mat-icon> Saldo Ahorros</button>
+        <button mat-button (click)="move(2)"><mat-icon>money_off</mat-icon> Saldo Préstamos</button>
+        <button mat-button (click)="move(3)"><mat-icon>accessibility_new</mat-icon> Creación de Personas</button>
+        <button mat-button (click)="move(4)"><mat-icon>account_balance</mat-icon> Apertura de Cuentas</button>
+        <button mat-button (click)="move(5)"><mat-icon>money</mat-icon> Depósitos</button>
+        <button mat-button (click)="move(6)"><mat-icon>money</mat-icon> Retiros </button>
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-toolbar class="example-toolbar">
       <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
       <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen" />
+      <button mat-icon-button [matMenuTriggerFor]="CerrarSesion"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #CerrarSesion="matMenu">
+            <button mat-menu-item (click)=logout()>Cerrar Sesión</button>
+            <button mat-menu-item>Cancelar</button>
+        </mat-menu>
       </mat-toolbar>
-        <mat-tab-group class="tabs">
+        <mat-tab-group class="tabs" (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
             <mat-tab label="POSICION CONSOLIDADA">
-                <app-form-posicion-consolidada></app-form-posicion-consolidada>
+                <div (swipe)="izquierda($event)" class="deslizar">
+                    <app-form-posicion-consolidada class="deb"></app-form-posicion-consolidada>
+                </div>
             </mat-tab>
             <mat-tab class="blanco" label="SALDO AHORROS">
-               <app-form-saldo-ahorros></app-form-saldo-ahorros>
+                <div (swipe)="izquierda($event)" class="deslizar">
+                    <app-form-saldo-ahorros class="deb"></app-form-saldo-ahorros>
+                </div>
             </mat-tab>
-            <mat-tab label="SALDO PRESTAMOS">
+            <mat-tab label="SALDO app-form-saldo-prestamos">
                 <app-form-saldo-prestamos></app-form-saldo-prestamos>
             </mat-tab>
             <mat-tab label="CREACION DE PERSONAS">
