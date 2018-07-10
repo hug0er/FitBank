@@ -15,9 +15,9 @@ import {MatCardModule} from '@angular/material/card';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent},
   { path: 'home', component: HomeComponent},
-  { path: '',redirectTo: '/login', pathMatch: 'full'},
+  /* { path: '',redirectTo: '/login', pathMatch: 'full'}, */
  // { path: '**', component: PageNotFoundComponent }
 ];
 
