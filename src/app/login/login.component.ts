@@ -27,8 +27,9 @@ export class LoginComponent implements OnInit {
   passwordFormControl = new FormControl('', [
     Validators.required,
   ]);
-  
+  intento = false;
   login () {
+    this.intento=true;
     if (!this.alerta.revisarInternet()){
       let User = {"usuario": this.usuario, "contrasena" : this.servicios.toAES(this.contrasena), "desencriptar" : "1" }
       this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
@@ -38,8 +39,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
         },(err) =>{
           console.log(err)
+          this.intento=false;
           this.alerta.presentarAlerta(err.error.mensajeUsuario)
           })
+    }else{
+      this.alerta.presentarAlerta('No esta conectado');
+      this.intento=false;
     }
   }
 }
