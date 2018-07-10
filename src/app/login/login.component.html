@@ -2,7 +2,7 @@
     <div>
         <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
     </div>
-    <form class="example-form">
+    <form>
         <mat-form-field fxFlexFill>
             <input matInput placeholder="Usuario" [formControl]="usernameFormControl" [(ngModel)]="usuario">
             <mat-error *ngIf="usernameFormControl.hasError('required')">
@@ -15,7 +15,11 @@
                 La contraseña es <strong>requerida</strong>
             </mat-error>
         </mat-form-field>
-        <button class="center" (click)="login()" fxFlexFill>Ingresar</button>
+        <br>
+        <br>
+        <br>
+        <button class="boton" (click)="login()" fxFlexFill>Ingresar</button>
+        
     </form>
     <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
 </div>

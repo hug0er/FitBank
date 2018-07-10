@@ -49,6 +49,18 @@ button {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
+
+@media screen and (max-width: 800px) {
+    .boton{
+        font-size: 5vw;
+    }
+  }
+@media screen and (min-width: 801px) {
+    .boton{
+        font-size: 3.25vw;
+    }
+  }
+
 button:hover {
     -webkit-transform: translateY(-3px);
     -ms-transform: translateY(-3px);
