@@ -21,15 +21,18 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   idForm = new FormControl('', [
     Validators.required,
   ]);
-
+  intento = false;
 posicionConsolidada(){
+  this.intento=true;
   if(!this.alerta.revisarInternet()){
     let envio = {"usuario": localStorage.getItem('user'), "id" : this.cedula}
     this.apiService.postProvider('/queryAllAccounts', localStorage.getItem('id_token'),envio).then((data : any)=>{
       this.nombre = data.clientName
       this.datos = data.array
+      this.intento=false;
       console.log(data.array[0].ccuenta);
          }, (err) => {
+           this.intento=false;
            this.datos = [];
            this.nombre = ''
            if (err.error){
@@ -39,6 +42,9 @@ posicionConsolidada(){
            this.alerta.presentarAlerta('Error con el Servidor')
            console.log(err)
     })
+  }else{
+    this.alerta.presentarAlerta('No esta conectado');
+    this.intento=false;
   }
   }
   close(){

@@ -10,6 +10,7 @@
             <input matInput placeholder="Nombre del Socio" type="text" disabled [(ngModel)]="nombre" name="nombre">
         </mat-form-field>
     </form>
+    <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
     <app-generar-cartas *ngFor="let dato of datos" [dato]="dato"></app-generar-cartas>
 </div>
 <div div fxLayout="row" fxLayoutAlign="center start" *ngIf="cedula" class="float">
