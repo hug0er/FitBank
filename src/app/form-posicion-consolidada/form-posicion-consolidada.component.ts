@@ -32,7 +32,11 @@ posicionConsolidada(){
          }, (err) => {
            this.datos = [];
            this.nombre = ''
-           this.alerta.presentarAlerta(err.error.mensajeUsuario)
+           if (err.error){
+            this.alerta.presentarAlerta(err.error.mensajeUsuario)
+           }
+           else 
+           this.alerta.presentarAlerta('Error con el Servidor')
            console.log(err)
     })
   }

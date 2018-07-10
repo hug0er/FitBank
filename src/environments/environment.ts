@@ -7,7 +7,7 @@ export const environment = {
   production: false,
 
   // URL of development API
-  apiUrl: 'https://ofimovil.fit-bank.com'
+  apiUrl: 'https://fastpay.fit-bank.com'
 };
 /*
  * In development mode, to ignore zone related error stack frames such as
