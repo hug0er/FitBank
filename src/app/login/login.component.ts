@@ -4,6 +4,7 @@ import {ApiService} from '../api.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
+import { OnlineStatusType, OnlineStatusService } from 'ngx-online-status';
 
 
 @Component({
@@ -13,14 +14,22 @@ import { Alerta } from '../funciones/alerta';
 })
 
 export class LoginComponent implements OnInit {
+  status: OnlineStatusType=1;
+  
+  OnlineStatusType = OnlineStatusType;
   usuario : string;
   contrasena : string;
   constructor(public apiService : ApiService, public servicios : Servicios,
-  private router: Router, private alerta:Alerta) {
+  private router: Router, private alerta:Alerta,private onlineStatusService: OnlineStatusService) {
+    this.onlineStatusService.status.subscribe((status:OnlineStatusType) =>{
+      this.status =status;
+    })
    }
 
   ngOnInit() {
+
   }
+  
   usernameFormControl = new FormControl('', [
     Validators.required,
   ]);

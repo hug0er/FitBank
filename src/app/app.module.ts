@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Servicios } from './funciones/encryptar';
 import { Alerta } from './funciones/alerta';
+import { OnlineStatusModule } from 'ngx-online-status';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { Alerta } from './funciones/alerta';
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    OnlineStatusModule
   ],
   providers: [ApiService, Servicios,Alerta],
   bootstrap: [AppComponent]

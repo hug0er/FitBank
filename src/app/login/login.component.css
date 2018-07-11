@@ -2,41 +2,53 @@ h1 {
     height: 100px;
     width: 100%;
     font-size: 18%;
-    background: #18aa8d;
-    color: white;
+    /* background: #18aa8d; */
+    /* color: white; */
     line-height: 150%;
     border-radius: 3px 3px 0 0;
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+   /*  background-color: #18aa8d;
+    transition: background-color 1s ease; */
 }
+
 
 .input {
     width: 100%;
 }
 
-form h1 .image {
+.image {
     -webkit-filter: drop-shadow(0px 0px 1px #222);
     filter: drop-shadow(0px 0px 1px #222);
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: filter 3s ease;
 }
-
-/* form {
-    box-sizing: border-box;
-    margin: 60px auto 0px;
-    width: 80%;
-    height: 100%;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
-    padding-bottom: 40px;
-    border-radius: 3px;
-} */
-
-/* form .center {
-    margin-left: 5%;
-    display: block;
-    border: none;
-    width: 90%;
+.image.offline {
+    filter:grayscale(75%) contrast(100%);
+  }
+.fondo{
+    height: 105px;
+    background-color: #18aa8d;
+    text-align: center;
+    /* color: #fff; */
+    line-height: 48px;
+    transition: background-color 1s ease;
 }
- */
-button {
+.fondo.offline {
+    background-color: grey;
+  }
+.status {
+    height : 20px ;
+    background-color: #ffffff;
+    text-align: center;
+    /* color: #fff; */
+    line-height: 48px;
+    transition: background-color 1s ease;
+  }
+  
+
+.button {
     border: none;
     background: #1abc9c;
     cursor: pointer;
@@ -47,16 +59,19 @@ button {
     margin-left: 25px;
     margin-top: 20px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    transition: background-color 1s ease;
 }
-
+.button.offline {
+    background-color: grey;
+  }
 
 @media screen and (max-width: 800px) {
-    .boton{
+    .button{
         font-size: 5vw;
     }
   }
 @media screen and (min-width: 801px) {
-    .boton{
+    .button{
         font-size: 3.25vw;
     }
   }
