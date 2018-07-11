@@ -68,6 +68,16 @@ export class HomeComponent implements OnDestroy {
   }
 
   izquierda(evt) {
-    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.selectedIndex+=-1 : this.selectedIndex+=1):'';
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ?  this.izq() : this.rigth()):'';
 }
+
+  izq(){
+  if (this.selectedIndex == 0){}
+    this.selectedIndex+=-1
+  }
+
+  rigth(){
+    if (this.selectedIndex == 6){}
+      this.selectedIndex+=1
+    }
 }
