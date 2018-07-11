@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
 
    public networkStatus(){
     this.online$.subscribe(value => {
-      console.log(value)
       this.internet = value;
     })
    }
