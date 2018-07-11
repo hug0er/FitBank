@@ -72,12 +72,18 @@ export class HomeComponent implements OnDestroy {
 }
 
   izq(){
-  if (this.selectedIndex == 0){}
-    this.selectedIndex+=-1
+  if (this.selectedIndex == 0){
+        this.selectedIndex= 0;
+  }else{
+      this.selectedIndex+=-1
+    }
   }
 
   rigth(){
-    if (this.selectedIndex == 6){}
-      this.selectedIndex+=1
+    if (this.selectedIndex == 6){
+      this.selectedIndex= 6;
+    }else{
+    this.selectedIndex+=1
     }
+  }
 }
