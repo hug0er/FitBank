@@ -33,7 +33,7 @@ posicionConsolidada(){
       console.log(data.array[0].ccuenta);
          }, (err) => {
            this.intento=false;
-           this.datos = [];
+           this.datos = null;
            this.nombre = ''
            if (err.error){
             this.alerta.presentarAlerta(err.error.mensajeUsuario)
@@ -48,7 +48,7 @@ posicionConsolidada(){
   }
   }
   close(){
-    this.datos = []
+    this.datos = null
     this.nombre = ''
     this.idForm.reset()
     this.idForm.clearValidators()

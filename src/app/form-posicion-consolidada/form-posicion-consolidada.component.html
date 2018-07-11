@@ -1,5 +1,5 @@
-<div class="container" fxLayout="column" fxLayoutAlign="start stretch">
-    <form class="example-form">
+<div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
+    <form>
         <mat-form-field fxFlexFill>
             <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm" [(ngModel)]="cedula">
             <mat-error *ngIf="idForm.hasError('required')">
@@ -9,9 +9,9 @@
         <mat-form-field fxFlexFill>
             <input matInput placeholder="Nombre del Socio" type="text" disabled [(ngModel)]="nombre" name="nombre">
         </mat-form-field>
+        <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
+        <app-generar-cartas *ngFor="let dato of datos" [dato]="dato" class="deb"></app-generar-cartas>
     </form>
-    <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
-    <app-generar-cartas *ngFor="let dato of datos" [dato]="dato"></app-generar-cartas>
 </div>
 <div div fxLayout="row" fxLayoutAlign="center start" *ngIf="cedula" class="float">
     <button mat-fab (click)="posicionConsolidada()" class="myfloat" color="primary"><mat-icon color="white">check_circle</mat-icon></button>
