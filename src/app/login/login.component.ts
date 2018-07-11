@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('user', User.usuario);
         this.alerta.presentarAlerta('Ingresado correctamente');
+        this.intento=false;
         this.router.navigate(['/home']);
         },(err) =>{
           console.log(err)
