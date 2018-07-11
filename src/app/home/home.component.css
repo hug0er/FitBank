@@ -1,50 +1,57 @@
+.inicioPag {
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
-.inicioPag{
-  height: 100%;
-  width: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 .example-container {
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
 }
+
 .example-sidenav {
-  align-items: center;
-  justify-content: center;
-  width: 55%;
-  max-width: 200px;
-  
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    max-width: 200px;
 }
-.borde{
-  border-bottom: 2px solid;
-  margin-bottom: 10px;
+
+.borde {
+    border-bottom: 2px solid;
+    margin-bottom: 10px;
 }
-.imagen2{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 150px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+
+.imagen2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.cabecera{
-  min-height: 20%;
-  max-height: 20%;
+
+.cabecera {
+    min-height: 20%;
+    max-height: 20%;
 }
-.imagen{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 150px;
+
+.imagen {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
 }
-.tabs{
+
+.tabs {
     font-size: 1em;
     position: static;
     height: 100%;
     width: 100%;
 }
+
+
 /*  .example-header {
     position: fixed;
     top: 0;

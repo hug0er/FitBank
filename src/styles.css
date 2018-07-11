@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html, body{
+html,
+body {
     height: 100%;
     width: 100%;
     font-size: 16px;
@@ -9,22 +10,23 @@ html, body{
     top: 0px;
     margin: 0 !important;
     padding: 0 !important;
-  }
+}
 
-  .example-form{
+.example-form {
     height: 81vh;
     width: 90%;
-    margin-left:5%;
+    margin-left: 5%;
     margin-right: 5%;
-  }
+}
 
-  .float {
+.float {
     position: fixed;
     width: 60px;
     height: 60px;
     bottom: 40px;
     right: 40px;
 }
+
 .my-float {
     margin-top: 22px;
 }

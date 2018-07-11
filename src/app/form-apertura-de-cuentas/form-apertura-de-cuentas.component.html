@@ -1,32 +1,32 @@
 <div class="example-form">
-        <form>
-                <mat-form-field fxFlexFill>
-                    <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
-                    <mat-error *ngIf="idForm2.hasError('required')">
-                        La identificacion es
-                        <strong>requerida</strong>
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlexFill>
-                    <input matInput placeholder="Nombre del Socio" type="text">
-                </mat-form-field>
-                <mat-form-field fxFlexFill>
-                    <mat-select placeholder="Grupo del Producto">
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlexFill>
-                    <mat-select placeholder="Producto">
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            
-                <button mat-button fxFlexFill> Cancelar</button>
-                <button mat-button fxFlexFill> Ingresar</button>
-                
-            </form>
+    <form>
+        <mat-form-field fxFlexFill>
+            <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
+            <mat-error *ngIf="idForm2.hasError('required')">
+                La identificacion es
+                <strong>requerida</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlexFill>
+            <input matInput placeholder="Nombre del Socio" type="text">
+        </mat-form-field>
+        <mat-form-field fxFlexFill>
+            <mat-select placeholder="Grupo del Producto">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlexFill>
+            <mat-select placeholder="Producto">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-button fxFlexFill> Cancelar</button>
+        <button mat-button fxFlexFill> Ingresar</button>
+
+    </form>
 </div>
