@@ -32,17 +32,18 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.imagen2.offline {
-    filter:grayscale(75%) contrast(100%);
-}
 
+.imagen2.offline {
+    filter: grayscale(75%) contrast(100%);
+}
 
 .cabecera {
     min-height: 20%;
     max-height: 20%;
     transition: background-color 2s ease;
 }
-.cabecera.offline{
+
+.cabecera.offline {
     background-color: #A0A0A0;
 }
 
@@ -79,11 +80,12 @@
     width: 150px;
     transition: filter 2s ease;
 }
+
 .imagen.offline {
-    filter:grayscale(75%) contrast(100%);
+    filter: grayscale(75%) contrast(100%);
 }
 
-.icono{
+.icono {
     margin-top: 10px;
 }
 
@@ -92,12 +94,13 @@
     position: static;
     height: 100%;
     width: 100%;
-    transition:  2s ease;
+    transition: 2s ease;
 }
-.tabs.offline{
+
+.tabs.offline {
     background-color: gray;
 }
 
-.contenido{
+.contenido {
     background-color: rgb(249, 249, 249);
 }

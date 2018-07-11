@@ -1,7 +1,6 @@
 <div [class.example-is-mobile]="mobileQuery.matches" class="inicioPag">
     <mat-sidenav-container class="example-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
-            closed class="example-sidenav">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" closed class="example-sidenav">
             <div class="borde">
                 <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" [class.offline]=!internet/>
             </div>
@@ -39,38 +38,38 @@
             </mat-toolbar>
             <mat-tab-group class="tabs" [class.offline]=!internet (swipe)="izquierda($event)" (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
                 <mat-tab label="POSICION CONSOLIDADA">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-posicion-consolidada></app-form-posicion-consolidada>
                     </div>
                 </mat-tab>
                 <mat-tab label="SALDO AHORROS">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-saldo-ahorros class="deb"></app-form-saldo-ahorros>
                     </div>
                 </mat-tab>
                 <mat-tab label="SALDO">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-saldo-prestamos></app-form-saldo-prestamos>
                     </div>
                 </mat-tab>
                 <mat-tab label="CREACION DE PERSONAS">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-creacion-de-personas></app-form-creacion-de-personas>
                     </div>
 
                 </mat-tab>
                 <mat-tab label="APERTURA DE CUENTAS">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-apertura-de-cuentas></app-form-apertura-de-cuentas>
                     </div>
                 </mat-tab>
                 <mat-tab label="DEPOSITOS">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-depositos></app-form-depositos>
                     </div>
                 </mat-tab>
                 <mat-tab label="RETIROS">
-                    <div class="contenido"(swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="izquierda($event)">
                         <app-form-retiros></app-form-retiros>
                     </div>
 

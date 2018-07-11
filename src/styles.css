@@ -13,7 +13,7 @@ body {
 }
 
 .example-form {
-    height: 83.5vh;
+    min-height: 83.5vh;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
