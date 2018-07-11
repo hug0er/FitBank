@@ -68,6 +68,7 @@ export class HomeComponent implements OnDestroy {
   }
 
   izquierda(evt) {
+    console.log('entre')
     const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ?  this.izq() : this.rigth()):'';
 }
 

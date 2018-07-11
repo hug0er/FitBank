@@ -13,7 +13,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Servicios } from './funciones/encryptar';
 import { Alerta } from './funciones/alerta';
+import 'hammerjs'
+import {HammerGestureConfig,HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
 import { OnlineStatusModule } from 'ngx-online-status';
+
+declare var Hammer : any;
+export class MyHammerConfig extends HammerGestureConfig  {
+  buildHammer(element: HTMLElement) {
+    let mc = new Hammer(element, {
+      touchAction: "pan-y",
+    });
+    return mc;
+  }
+}
+
 
 
 @NgModule({
@@ -34,7 +47,7 @@ import { OnlineStatusModule } from 'ngx-online-status';
     FlexLayoutModule,
     OnlineStatusModule
   ],
-  providers: [ApiService, Servicios,Alerta],
+  providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
