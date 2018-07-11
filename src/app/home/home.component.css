@@ -32,6 +32,10 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
+.imagen2.offline {
+    filter:grayscale(75%) contrast(100%);
+}
+
 
 .cabecera {
     min-height: 20%;
