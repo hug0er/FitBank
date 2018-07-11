@@ -10,6 +10,11 @@ import {FormAPERTURADECUENTASComponent} from '../form-apertura-de-cuentas/form-a
 import {FormDEPOSITOSComponent} from '../form-depositos/form-depositos.component';
 import {FormRETIROSComponent} from '../form-retiros/form-retiros.component';
 import {Router, ActivatedRoute} from '@angular/router';
+import {ApiService} from '../api.service';
+import { Servicios } from '../funciones/encryptar';
+import { Alerta } from '../funciones/alerta';
+import { Observable, fromEvent, merge, of } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 export interface Food {
   value: string;
@@ -24,6 +29,8 @@ export interface Food {
 
 export class HomeComponent implements OnDestroy {
   eventText = '';
+  online$: Observable<boolean>;
+  internet: boolean;
   mobileQuery: MediaQueryList;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
@@ -34,11 +41,24 @@ export class HomeComponent implements OnDestroy {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,public apiService : ApiService, public servicios : Servicios,
+    private router: Router, private alerta:Alerta) {
     this.mobileQuery = media.matchMedia('(max-width: 2000px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
+      this.online$ = merge(
+        of(navigator.onLine),
+        fromEvent(window, 'online').pipe(mapTo(true)),
+        fromEvent(window, 'offline').pipe(mapTo(false))
+      )
+      this.networkStatus()
   }
+
+  public networkStatus(){
+    this.online$.subscribe(value => {
+      this.internet = value;
+    })
+   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);

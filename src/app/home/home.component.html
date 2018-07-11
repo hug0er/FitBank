@@ -1,59 +1,76 @@
 <div [class.example-is-mobile]="mobileQuery.matches" class="inicioPag">
     <mat-sidenav-container class="example-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" closed class="example-sidenav">
-            <div class="borde"><img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" /></div>
-            <button mat-button (click)="move(0);snav.close()"><mat-icon>account_box</mat-icon> Posición Consolidada</button>
-            <button mat-button (click)="move(1);snav.close()"><mat-icon>attach_money</mat-icon> Saldo Ahorros</button>
-            <button mat-button (click)="move(2);snav.close()"><mat-icon>money_off</mat-icon> Saldo Préstamos</button>
-            <button mat-button (click)="move(3);snav.close()"><mat-icon>accessibility_new</mat-icon> Creación de Personas</button>
-            <button mat-button (click)="move(4);snav.close()"><mat-icon>account_balance</mat-icon> Apertura de Cuentas</button>
-            <button mat-button (click)="move(5);snav.close()"><mat-icon>money</mat-icon> Depósitos</button>
-            <button mat-button (click)="move(6);snav.close()"><mat-icon>money</mat-icon> Retiros </button>
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
+            closed class="example-sidenav">
+            <div class="borde">
+                <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" />
+            </div>
+            <button mat-button (click)="move(0);snav.close()">
+                <mat-icon>account_box</mat-icon> Posición Consolidada</button>
+            <button mat-button (click)="move(1);snav.close()">
+                <mat-icon>attach_money</mat-icon> Saldo Ahorros</button>
+            <button mat-button (click)="move(2);snav.close()">
+                <mat-icon>money_off</mat-icon> Saldo Préstamos</button>
+            <button mat-button (click)="move(3);snav.close()">
+                <mat-icon>accessibility_new</mat-icon> Creación de Personas</button>
+            <button mat-button (click)="move(4);snav.close()">
+                <mat-icon>account_balance</mat-icon> Apertura de Cuentas</button>
+            <button mat-button (click)="move(5);snav.close()">
+                <mat-icon>money</mat-icon> Depósitos</button>
+            <button mat-button (click)="move(6);snav.close()">
+                <mat-icon>money</mat-icon> Retiros </button>
         </mat-sidenav>
         <mat-sidenav-content>
-            <mat-toolbar class="cabecera">
-                <button class="boton" (click)="snav.open()"><mat-icon>menu</mat-icon></button>
+            <mat-toolbar class="cabecera" [class.offline]=!internet>
+                <button class="boton" (click)="snav.open()">
+                    <mat-icon>menu</mat-icon>
+                </button>
                 <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen" />
-                <button mat-icon-button [matMenuTriggerFor]="CerrarSesion"><mat-icon>more_vert</mat-icon></button>
+                <div class="icono" *ngIf=!internet>
+                    <mat-icon>signal_wifi_off</mat-icon>
+                </div>
+                <button mat-icon-button [matMenuTriggerFor]="CerrarSesion">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
                 <mat-menu #CerrarSesion="matMenu">
                     <button mat-menu-item (click)=logout()>Cerrar Sesión</button>
                     <button mat-menu-item>Cancelar</button>
                 </mat-menu>
             </mat-toolbar>
-            <mat-tab-group class="tabs" (swipe)="izquierda($event)" (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
+            <mat-tab-group class="tabs" [class.offline]=!internet (swipe)="izquierda($event)" (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
                 <mat-tab label="POSICION CONSOLIDADA">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-posicion-consolidada></app-form-posicion-consolidada>
                     </div>
                 </mat-tab>
                 <mat-tab label="SALDO AHORROS">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-saldo-ahorros class="deb"></app-form-saldo-ahorros>
                     </div>
                 </mat-tab>
                 <mat-tab label="SALDO">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-saldo-prestamos></app-form-saldo-prestamos>
                     </div>
                 </mat-tab>
                 <mat-tab label="CREACION DE PERSONAS">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-creacion-de-personas></app-form-creacion-de-personas>
                     </div>
 
                 </mat-tab>
                 <mat-tab label="APERTURA DE CUENTAS">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-apertura-de-cuentas></app-form-apertura-de-cuentas>
                     </div>
                 </mat-tab>
                 <mat-tab label="DEPOSITOS">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-depositos></app-form-depositos>
                     </div>
                 </mat-tab>
                 <mat-tab label="RETIROS">
-                    <div (swipe)="izquierda($event)">
+                    <div class="contenido"(swipe)="izquierda($event)">
                         <app-form-retiros></app-form-retiros>
                     </div>
 
