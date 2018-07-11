@@ -1,6 +1,6 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start stretch">
-    <div class = "fondo" [class.offline]="status === OnlineStatusType.OFFLINE">
-        <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image" [class.offline]="status === OnlineStatusType.OFFLINE"></h1>
+    <div class = "fondo">
+        <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image"></h1>
     </div>
     <form>
         <mat-form-field fxFlexFill>
@@ -16,12 +16,12 @@
             </mat-error>
         </mat-form-field>
         <br>
-        <div class="status" *ngIf=!status [class.offline]="status === OnlineStatusType.OFFLINE">
+        <div class="status" *ngIf=!internet>
             <mat-icon>signal_wifi_off</mat-icon>
         </div>
         <br>
         <br>
-        <button class="button" [class.offline]="status === OnlineStatusType.OFFLINE" (click)="login()" fxFlexFill>Ingresar</button>
+        <button class="button" (click)="login()" fxFlexFill>Ingresar</button>
         
     </form>
     <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>

@@ -4,7 +4,8 @@ import {ApiService} from '../api.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
-import { OnlineStatusType, OnlineStatusService } from 'ngx-online-status';
+import { Observable, fromEvent, merge, of } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 
 @Component({
@@ -14,15 +15,24 @@ import { OnlineStatusType, OnlineStatusService } from 'ngx-online-status';
 })
 
 export class LoginComponent implements OnInit {
-  status: OnlineStatusType=1;
-  
-  OnlineStatusType = OnlineStatusType;
+  online$: Observable<boolean>;
+  internet: boolean;
   usuario : string;
   contrasena : string;
   constructor(public apiService : ApiService, public servicios : Servicios,
-  private router: Router, private alerta:Alerta,private onlineStatusService: OnlineStatusService) {
-    this.onlineStatusService.status.subscribe((status:OnlineStatusType) =>{
-      this.status =status;
+  private router: Router, private alerta:Alerta) {
+    this.online$ = merge(
+      of(navigator.onLine),
+      fromEvent(window, 'online').pipe(mapTo(true)),
+      fromEvent(window, 'offline').pipe(mapTo(false))
+    )
+    this.networkStatus()
+   }
+
+   public networkStatus(){
+    this.online$.subscribe(value => {
+      console.log(value)
+      this.internet = value;
     })
    }
 

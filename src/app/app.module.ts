@@ -15,7 +15,7 @@ import { Servicios } from './funciones/encryptar';
 import { Alerta } from './funciones/alerta';
 import 'hammerjs'
 import {HammerGestureConfig,HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
-import { OnlineStatusModule } from 'ngx-online-status';
+
 
 declare var Hammer : any;
 export class MyHammerConfig extends HammerGestureConfig  {
@@ -45,7 +45,6 @@ export class MyHammerConfig extends HammerGestureConfig  {
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
-    OnlineStatusModule
   ],
   providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}],
   bootstrap: [AppComponent]
