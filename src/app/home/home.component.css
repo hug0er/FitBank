@@ -16,6 +16,7 @@
     justify-content: center;
     width: 55%;
     max-width: 200px;
+    margin-top: -60px;
 }
 
 .borde {
@@ -37,6 +38,32 @@
     max-height: 20%;
 }
 
+.boton {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    background: transparent;
+}
+
+.boton:focus {
+    outline: none;
+}
+
+.boton:hover {
+    background: rgb(179, 176, 176);
+}
+
 .imagen {
     display: block;
     margin-left: auto;
@@ -50,22 +77,3 @@
     height: 100%;
     width: 100%;
 }
-
-
-/*  .example-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .example-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  .deb{
-    color: #000000;
-    margin-top: 0;
-  } */
