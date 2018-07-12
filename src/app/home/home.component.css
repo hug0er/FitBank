@@ -37,16 +37,6 @@
         filter: grayscale(75%) contrast(100%);
     }
     
-    .mat-button:hover {
-        background: white;
-        border: none;
-        text-decoration: none;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-    }
-    
     .cabecera {
         min-height: 20%;
         max-height: 20%;
@@ -93,6 +83,11 @@
     
     .imagen.offline {
         filter: grayscale(75%) contrast(100%);
+    }
+    
+    .mat-button {
+        text-align: left;
+        width: 100%;
     }
     
     .icono {
