@@ -13,8 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Servicios } from './funciones/encryptar';
 import { Alerta } from './funciones/alerta';
+import {internetComponent} from './funciones/internet'
 import 'hammerjs'
 import {HammerGestureConfig,HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
+import {MatDialogModule} from '@angular/material'
+import {DialogoComponent} from './dialogo/dialogo.component'
+
+
 
 
 declare var Hammer : any;
@@ -33,9 +38,11 @@ export class MyHammerConfig extends HammerGestureConfig  {
   declarations: [
     AppComponent,
     routingComponents,
+    DialogoComponent
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
     MatInputModule,
@@ -46,7 +53,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     HttpClientModule,
     FlexLayoutModule,
   ],
-  providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}],
-  bootstrap: [AppComponent]
-})
+  providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}, internetComponent],
+  bootstrap: [AppComponent],
+  entryComponents : [DialogoComponent]
+}) 
 export class AppModule { }

@@ -64,18 +64,6 @@ export class HomeComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  idForm = new FormControl('', [
-    Validators.required,
-  ]);
-  nameForm = new FormControl('', [
-    Validators.required,
-  ]);
-  idForm2 = new FormControl('', [
-    Validators.required,
-  ]);
-  nameForm2 = new FormControl('', [
-    Validators.required,
-  ]);
 
   logout() {
     localStorage.clear();

@@ -4,6 +4,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import {ApiService} from '../api.service'
 import {GenerarCartasComponent} from '../generar-cartas/generar-cartas.component'
 import {Alerta} from '../funciones/alerta' 
+import {internetComponent} from '../funciones/internet'
 
 @Component({
   selector: 'app-form-posicion-consolidada',
@@ -14,13 +15,14 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   nombre : string
   datos : any
   cedula : string;
-  constructor(public apiService : ApiService, public alerta: Alerta) { }
+  internet : internetComponent;
+  constructor(public apiService : ApiService, public alerta: Alerta ) { 
+    this.internet = new internetComponent
+  }
 
   ngOnInit() {
   }
-  idForm = new FormControl('', [
-    Validators.required,
-  ]);
+  idForm = new FormControl('', [ Validators.required,]);
   intento = false;
 posicionConsolidada(){
   this.intento=true;
@@ -30,11 +32,13 @@ posicionConsolidada(){
       this.nombre = data.clientName
       this.datos = data.array
       this.intento=false;
-      console.log(data.array[0].ccuenta);
+      localStorage.setItem('fecha1', (new Date()).toDateString());
+      localStorage.setItem('data1',JSON.stringify(data));
+      localStorage.setItem('idSocio',this.cedula)
          }, (err) => {
            this.intento=false;
            this.datos = null;
-           this.nombre = ''
+           this.nombre = null;
            if (err.error){
             this.alerta.presentarAlerta(err.error.mensajeUsuario)
            }
@@ -44,12 +48,16 @@ posicionConsolidada(){
     })
   }else{
     this.alerta.presentarAlerta('No esta conectado');
+    this.nombre = JSON.parse((localStorage.getItem('data1'))).clienName
+    this.datos = JSON.parse((localStorage.getItem('data1'))).array
+    this.alerta.generarDialogo()
+    // this.nombre = valor.clienName;
     this.intento=false;
   }
   }
   close(){
     this.datos = null
-    this.nombre = ''
+    this.nombre = null
     this.idForm.reset()
     this.idForm.clearValidators()
     

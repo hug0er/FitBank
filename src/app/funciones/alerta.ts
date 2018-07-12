@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ComponentRef } from '@angular/core';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material'
+import { DialogoComponent } from '../dialogo/dialogo.component';
 
 @Injectable()
 export class Alerta{
   
-  constructor( private snackBar: MatSnackBar ) {
+  constructor( private snackBar: MatSnackBar, private dialog : MatDialog ) {
 
   }
     
@@ -22,6 +24,19 @@ export class Alerta{
             return false
         }
         
+    }
+    
+    generarDialogo(){
+        let dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            id: 1,
+            title: 'Angular For Beginners'
+        };
+        
+        this.dialog.open(DialogoComponent, dialogConfig)
     }
 
 }
