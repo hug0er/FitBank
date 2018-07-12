@@ -1,13 +1,16 @@
-<h2 mat-dialog-title>Fitbank</h2>
+<div class="textura">
+    <h2 mat-dialog-title>Fitbank</h2>
 
-<mat-dialog-content>
+    <mat-dialog-content>
 
-    <p>Por el momento estás desconectado Se te presentara la ultima busqueda realizada con fecha</p>
-    <p>{{fecha}}</p>
+        <p>Por el momento estás desconectado.</p>
+        <p>Se te presentara la última busqueda realizada el:</p>
+        <p>{{fecha}}</p>
 
 
-</mat-dialog-content>
+    </mat-dialog-content>
 
-<mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Cerrar</button>
-</mat-dialog-actions>
+    <mat-dialog-actions>
+        <button mat-button class="boton" (click)="close()">Aceptar</button>
+    </mat-dialog-actions>
+</div>
