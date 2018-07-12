@@ -1,10 +1,10 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start stretch">
-    <div class = "fondo" [class.offline]=!internet>
+    <div class="fondo" [class.offline]=!internet>
         <h1><img src="assets/resources/mipmap-hdpi/logo_client.png" class="image" [class.offline]=!internet></h1>
     </div>
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Usuario" [formControl]="usernameFormControl" [(ngModel)]="usuario">
+            <input matInput placeholder="Usuario" class="input" [formControl]="usernameFormControl" [(ngModel)]="usuario">
             <mat-error *ngIf="usernameFormControl.hasError('required')">
                 El usuario es <strong>requerido</strong>
             </mat-error>
@@ -22,7 +22,7 @@
         <br>
         <br>
         <button class="button" (click)="login()" [class.offline]=!internet fxFlexFill>Ingresar</button>
-        
+
     </form>
     <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
 </div>

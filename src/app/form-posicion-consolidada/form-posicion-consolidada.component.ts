@@ -32,7 +32,8 @@ posicionConsolidada(){
       this.nombre = data.clientName
       this.datos = data.array
       this.intento=false;
-      localStorage.setItem('fecha1', ('Fecha: '+ new Date().toLocaleDateString() + ' Hora: '+ new Date().toLocaleTimeString()));
+      localStorage.setItem('c1',this.cedula)
+      localStorage.setItem('fecha1', (new Date().toLocaleDateString() +'&'+ new Date().toLocaleTimeString()));
       localStorage.setItem('data1',JSON.stringify(data));
       localStorage.setItem('idSocio',this.cedula)
          }, (err) => {
@@ -51,7 +52,7 @@ posicionConsolidada(){
     this.nombre = JSON.parse((localStorage.getItem('data1'))).clientName
     this.datos = JSON.parse((localStorage.getItem('data1'))).array
     this.alerta.generarDialogo()
-    // this.nombre = valor.clienName;
+    this.cedula = localStorage.getItem('c1')
     this.intento=false;
   }
   }

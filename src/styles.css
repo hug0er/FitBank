@@ -30,3 +30,7 @@ body {
 .my-float {
     margin-top: 22px;
 }
+
+.mat-form-field-placeholder {
+    font-size: 104px !important;
+}
