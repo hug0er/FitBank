@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-
+import {IdiomaComponent} from '../idioma/idioma.component';
 
 
 export interface Food {
@@ -17,13 +17,15 @@ export interface Food {
 export class FormSALDOAHORROSComponent implements OnInit {
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
-
+  idiomas: any;
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-  constructor() { }
+  constructor(public idioma : IdiomaComponent) {
+    this.idiomas= idioma.getEspanol()
+   }
 
   ngOnInit() {
   }

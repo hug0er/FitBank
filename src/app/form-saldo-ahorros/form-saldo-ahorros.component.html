@@ -1,39 +1,43 @@
 <div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
+            <input matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm2">
             <mat-error *ngIf="idForm2.hasError('required')">
-                La identificacion es <strong>requerida</strong>
+                <strong>{{idiomas.msjIdRequerido}}</strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Nombre del Socio" type="text">
+            <input matInput placeholder={{idiomas.nombreSocio}} type="text">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <mat-select placeholder="Cuenta">
+            <mat-select placeholder="{{idiomas.Cuenta}}">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                     {{food.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Producto" type="text">
+            <input matInput placeholder="{{idiomas.Producto}}" type="text">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Saldo Disponible" type="text">
+            <input matInput placeholder={{idiomas.SaldoDisponible}} type="text">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Saldo por Efectivizar" type="text">
+            <input matInput placeholder={{idiomas.SaldoEfectivizar}} type="text">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Balance bloqueado" type="text">
+            <input matInput placeholder={{idiomas.BalanceBloqueado}} type="text">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Balance Contable" type="text">
+            <input matInput placeholder={{idiomas.BalanceContable}} type="text">
         </mat-form-field>
         <div div fxLayout="row" fxLayoutAlign="start start">
-            <button fxFlex="20" mat-icon-button><mat-icon>check_circle</mat-icon></button>
-            <button fxFlex="20" mat-icon-button><mat-icon>cancel</mat-icon></button>
+            <button fxFlex="20" mat-icon-button>
+                <mat-icon>check_circle</mat-icon>
+            </button>
+            <button fxFlex="20" mat-icon-button>
+                <mat-icon>cancel</mat-icon>
+            </button>
         </div>
     </form>
 </div>
