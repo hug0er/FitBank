@@ -1,106 +1,121 @@
-.inicioPag {
-    height: 100%;
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.example-container {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-}
-
-.example-sidenav {
-    align-items: center;
-    justify-content: center;
-    width: 55%;
-    max-width: 200px;
-    margin-top: -60px;
-}
-
-.borde {
-    border-bottom: 2px solid;
-    margin-bottom: 10px;
-}
-
-.imagen2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.imagen2.offline {
-    filter: grayscale(75%) contrast(100%);
-}
-
-.cabecera {
-    min-height: 20%;
-    max-height: 20%;
-    transition: background-color 2s ease;
-}
-
-.cabecera.offline {
-    background-color: #A0A0A0;
-}
-
-.boton {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 0;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    box-shadow: none;
-    border-radius: none;
-    border: none;
-    background: transparent;
-}
-
-.boton:focus {
-    outline: none;
-}
-
-.boton:hover {
-    background: rgb(179, 176, 176);
-}
-
-.imagen {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
-    transition: filter 2s ease;
-}
-
-.imagen.offline {
-    filter: grayscale(75%) contrast(100%);
-}
-
-.icono {
-    margin-top: 10px;
-}
-
-.tabs {
-    font-size: 1em;
-    position: static;
-    height: 100%;
-    width: 100%;
-    transition: 2s ease;
-}
-
-.tabs.offline {
-    background-color: gray;
-}
-
-.contenido {
-    background-color: rgb(249, 249, 249);
-}
+    .inicioPag {
+        height: 100%;
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .example-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+    }
+    
+    .example-sidenav {
+        align-items: center;
+        justify-content: center;
+        width: 55%;
+        max-width: 200px;
+        margin-top: -60px;
+    }
+    
+    .borde {
+        border-bottom: 2px solid;
+        margin-bottom: 10px;
+    }
+    
+    .imagen2 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .imagen2.offline {
+        filter: grayscale(75%) contrast(100%);
+    }
+    
+    .mat-button:hover {
+        background: white;
+        border: none;
+        text-decoration: none;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    
+    .cabecera {
+        min-height: 20%;
+        max-height: 20%;
+        transition: background-color 2s ease;
+    }
+    
+    .cabecera.offline {
+        background-color: #A0A0A0;
+    }
+    
+    .boton {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        box-shadow: none;
+        border-radius: none;
+        border: none;
+        background: transparent;
+    }
+    
+    .boton:focus {
+        outline: none;
+    }
+    
+    .boton:hover {
+        background: rgb(179, 176, 176);
+    }
+    
+    .imagen {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        transition: filter 2s ease;
+    }
+    
+    .imagen.offline {
+        filter: grayscale(75%) contrast(100%);
+    }
+    
+    .icono {
+        margin-top: 10px;
+    }
+    
+    .tabs {
+        font-size: 1em;
+        position: static;
+        height: 100%;
+        width: 100%;
+        transition: 2s ease;
+    }
+    
+    .tabs.offline {
+        background-color: gray;
+    }
+    
+    .contenido {
+        background-color: rgb(249, 249, 249);
+    }
+    
+    .oculto {
+        height: 0px;
+        width: 0px;
+    }

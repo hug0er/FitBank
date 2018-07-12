@@ -4,6 +4,7 @@
             <div class="borde">
                 <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" [class.offline]=!internet/>
             </div>
+            <button mat-button class="oculto"></button>
             <button mat-button (click)="move(0);snav.close()">
                 <mat-icon>account_box</mat-icon> Posición Consolidada</button>
             <button mat-button (click)="move(1);snav.close()">

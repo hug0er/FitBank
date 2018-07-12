@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -28,6 +28,7 @@ export interface Food {
 })
 
 export class HomeComponent implements OnDestroy {
+  @ViewChild('bot1') bot1:ElementRef;
   eventText = '';
   online$: Observable<boolean>;
   internet: boolean;
@@ -82,6 +83,7 @@ export class HomeComponent implements OnDestroy {
   }
   move(num){
     this.selectedIndex=num;
+    console.log(this.bot1);
   }
   selectedIndexChange(val){
     this.selectedIndex=val;
