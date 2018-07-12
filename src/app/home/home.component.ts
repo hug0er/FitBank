@@ -55,7 +55,7 @@ export class HomeComponent implements OnDestroy {
       fromEvent(window, 'offline').pipe(mapTo(false))
     )
     this.networkStatus()
-    this.idiomas= idioma.espanol
+    this.idiomas= idioma.getEspanol()
     console.log(this.idiomas)
   }
 
@@ -99,5 +99,12 @@ export class HomeComponent implements OnDestroy {
     } else {
       this.selectedIndex += 1
     }
+  }
+  espanol(){
+    this.idiomas = this.idioma.getEspanol();
+  }
+  ingles(){
+
+    this.idiomas = this.idioma.getIngles(); 
   }
 }

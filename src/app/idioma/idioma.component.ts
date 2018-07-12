@@ -10,7 +10,7 @@ export class IdiomaComponent implements OnInit {
     'Usuario': 'Usuario',
     'Contrasena': 'Contrasena',
     'btnIngresar': 'Ingresar',
-    'PosicionConsolidada': 'Posición Consolidada',
+    'PosicionConsolidada': 'Paco papu de los papus',
     'SaldoAhorros': 'Saldo Ahorros',
     'SaldoPrestamos': 'Saldo Préstamos',
     'CreacionPersonas': 'Creación de Personas',
@@ -18,6 +18,8 @@ export class IdiomaComponent implements OnInit {
     'Depositos': 'Depósitos',
     'Retiros': 'Retiros',
     'CerrarSesion': 'Cerrar Sesión',
+    'ES':'Español',
+    'EN' : 'Inglés',
     'idSocio': 'Id del Socio',
     'nombreSocio': 'Nombre del Socio',
     'Cuenta': 'Cuenta',
@@ -63,6 +65,8 @@ export class IdiomaComponent implements OnInit {
     'Depositos': 'Depósitos',
     'Retiros': 'Retiros',
     'CerrarSesion': 'Cerrar Sesión',
+    'ES':'Español',
+    'EN' : 'Inglés',
     'idSocio': 'Id del Socio',
     'nombreSocio': 'Nombre del Socio',
     'Cuenta': 'Cuenta',
@@ -102,6 +106,13 @@ export class IdiomaComponent implements OnInit {
   ngOnInit() {
   }
 
+  getEspanol(){
+    return this.espanol
+  }
+
+  getIngles(){
+    return this.ingles
+  }
 
 
 }
