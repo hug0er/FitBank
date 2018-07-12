@@ -43,6 +43,6 @@ export const routingComponents = [LoginComponent,
   FormAPERTURADECUENTASComponent,
   FormDEPOSITOSComponent,
   FormRETIROSComponent,
-  GenerarCartasComponent
+  GenerarCartasComponent,
 ]
 

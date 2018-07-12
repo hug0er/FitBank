@@ -1,13 +1,13 @@
 <div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm" [(ngModel)]="cedula">
+            <input matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm" [(ngModel)]="cedula">
             <mat-error *ngIf="idForm.hasError('required')">
-                La identificacion es <strong>requerida</strong>
+                <strong>{{idiomas.msjIdRequerido}}</strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Nombre del Socio" type="text" disabled [(ngModel)]="nombre" name="nombre">
+            <input matInput placeholder={{idiomas.nombreSocio}} type="text" disabled [(ngModel)]="nombre" name="nombre">
         </mat-form-field>
         <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
         <app-generar-cartas *ngFor="let dato of datos" [dato]="dato" class="deb"></app-generar-cartas>
