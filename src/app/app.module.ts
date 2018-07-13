@@ -18,7 +18,7 @@ import 'hammerjs'
 import {HammerGestureConfig,HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
 import {MatDialogModule} from '@angular/material'
 import {DialogoComponent} from './dialogo/dialogo.component'
-import {IdiomaComponent} from './idioma/idioma.component';
+import { Idioma} from './funciones/idioma';
 
 
 
@@ -53,7 +53,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
     HttpClientModule,
     FlexLayoutModule,
   ],
-  providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}, internetComponent,IdiomaComponent],
+  providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}, internetComponent,Idioma],
   bootstrap: [AppComponent],
   entryComponents : [DialogoComponent]
 }) 

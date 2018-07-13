@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable, ComponentRef } from '@angular/core';
 
-@Component({
-  selector: 'app-idioma',
-  templateUrl: './idioma.component.html',
-  styleUrls: ['./idioma.component.css']
-})
-export class IdiomaComponent implements OnInit {
+@Injectable()
+export class Idioma{
+  
+  constructor() {
+
+  }
   ingles = {
     'Usuario': 'User',
     'Contrasena': 'Password',
@@ -100,19 +100,13 @@ export class IdiomaComponent implements OnInit {
     'msjIdRequerido': 'La identificacion es requerida',
     'msjContrasenaRequerida': 'La contraseña es requerida',
   }
-
-  constructor() { }
-
-  ngOnInit() {
+  idiomas : any;
+  getIdioma(){
+    if(navigator.language==='en-US'){
+      this.idiomas=this.ingles;
+    }else{
+      this.idiomas=this.espanol;
+    }
+    localStorage.setItem('idioma',JSON.stringify(this.idiomas));
   }
-
-  getEspanol(){
-    return this.espanol
-  }
-
-  getIngles(){
-    return this.ingles
-  }
-
-
 }

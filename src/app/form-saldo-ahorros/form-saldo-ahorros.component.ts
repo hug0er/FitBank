@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import {IdiomaComponent} from '../idioma/idioma.component';
+
 
 
 export interface Food {
@@ -23,8 +23,8 @@ export class FormSALDOAHORROSComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-  constructor(public idioma : IdiomaComponent) {
-    this.idiomas= idioma.getEspanol()
+  constructor() {
+    this.idiomas= JSON.parse(localStorage.getItem('idioma'))
    }
 
   ngOnInit() {

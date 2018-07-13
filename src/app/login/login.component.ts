@@ -6,6 +6,7 @@ import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
+import { Idioma} from '../funciones/idioma';
 
 
 @Component({
@@ -20,13 +21,14 @@ export class LoginComponent implements OnInit {
   usuario : string;
   contrasena : string;
   constructor(public apiService : ApiService, public servicios : Servicios,
-  private router: Router, private alerta:Alerta) {
+  private router: Router, private alerta:Alerta,private idioma:Idioma) {
     this.online$ = merge(
       of(navigator.onLine),
       fromEvent(window, 'online').pipe(mapTo(true)),
       fromEvent(window, 'offline').pipe(mapTo(false))
     )
     this.networkStatus()
+    this.idioma.getIdioma();
    }
 
    public networkStatus(){

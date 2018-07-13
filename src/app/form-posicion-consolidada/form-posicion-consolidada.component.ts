@@ -5,7 +5,7 @@ import {ApiService} from '../api.service'
 import {GenerarCartasComponent} from '../generar-cartas/generar-cartas.component'
 import {Alerta} from '../funciones/alerta' 
 import {internetComponent} from '../funciones/internet'
-import {IdiomaComponent} from '../idioma/idioma.component'
+
 @Component({
   selector: 'app-form-posicion-consolidada',
   templateUrl: './form-posicion-consolidada.component.html',
@@ -17,9 +17,9 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   idiomas: any;
   cedula : string;
   internet : internetComponent;
-  constructor(public apiService : ApiService, public alerta: Alerta, public idioma : IdiomaComponent ) { 
+  constructor(public apiService : ApiService, public alerta: Alerta) { 
     this.internet = new internetComponent
-    this.idiomas= idioma.espanol
+    this.idiomas= JSON.parse(localStorage.getItem('idioma'))
     console.log(this.idiomas)
   }
 

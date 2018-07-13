@@ -15,7 +15,7 @@ import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
-import { IdiomaComponent } from '../idioma/idioma.component';
+
 
 
 export interface Food {
@@ -56,7 +56,7 @@ export class HomeComponent implements OnDestroy {
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
-    private router: Router, private alerta: Alerta,public idioma : IdiomaComponent ) {
+    private router: Router, private alerta: Alerta ) {
     history.pushState(null,null,document.URL)
     this.mobileQuery = media.matchMedia('(max-width: 2000px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -67,7 +67,7 @@ export class HomeComponent implements OnDestroy {
       fromEvent(window, 'offline').pipe(mapTo(false))
     )
     this.networkStatus()
-    this.idiomas= idioma.getEspanol()
+    this.idiomas= JSON.parse(localStorage.getItem('idioma'))
     console.log(this.idiomas)
   }
 
@@ -112,14 +112,6 @@ export class HomeComponent implements OnDestroy {
       this.selectedIndex += 1
     }
   }
-  espanol(){
-    this.idiomas = this.idioma.getEspanol();
-  }
-  ingles(){
-
-    this.idiomas = this.idioma.getIngles(); 
-  }
-
   sleep(){
 
   }
