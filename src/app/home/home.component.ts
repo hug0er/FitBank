@@ -112,7 +112,8 @@ export class HomeComponent implements OnDestroy {
       this.selectedIndex += 1
     }
   }
-  sleep(){
-
+  @ViewChild('snav') snav: any;
+  cerrarMenu(evt){
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null: this.snav.close()) : '';
   }
 }
