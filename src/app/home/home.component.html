@@ -1,6 +1,6 @@
 <div [class.example-is-mobile]="mobileQuery.matches" class="inicioPag">
-    <mat-sidenav-container class="example-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav (swipe)="cerrarMenu($event)" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" closed class="example-sidenav">
+    <mat-sidenav-container (swipe)="cerrarMenu($event)" class="example-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" closed class="example-sidenav">
             <div class="borde">
                 <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" [class.offline]=!internet/>
             </div>

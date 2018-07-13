@@ -14,7 +14,7 @@
     .example-sidenav {
         align-items: center;
         justify-content: center;
-        width: 55%;
+        width: 100%;
         max-width: 200px;
         margin-top: -60px;
     }
@@ -67,10 +67,6 @@
     
     .boton:focus {
         outline: none;
-    }
-    
-    .boton:hover {
-        background: rgb(179, 176, 176);
     }
     
     .imagen {
