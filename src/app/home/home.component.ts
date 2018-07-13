@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { ChangeDetectorRef, HostListener, Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -16,6 +16,7 @@ import { Alerta } from '../funciones/alerta';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
 import { IdiomaComponent } from '../idioma/idioma.component';
+
 
 export interface Food {
   value: string;
@@ -38,7 +39,16 @@ export class HomeComponent implements OnDestroy {
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
   selectedIndex: number = 0;
+  salida: boolean = false;
   private _mobileQueryListener: () => void;
+  @HostListener('window:popstate', ['$event'])
+  onPopState($event) {
+    if(this.salida){
+      history.back();
+    }else{
+      history.pushState(null,null,document.URL);
+    }
+}
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
     { value: 'pizza-1', viewValue: 'Pizza' },
@@ -46,6 +56,7 @@ export class HomeComponent implements OnDestroy {
   ];
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
     private router: Router, private alerta: Alerta,public idioma : IdiomaComponent ) {
+      history.pushState(null,null,document.URL);
     this.mobileQuery = media.matchMedia('(max-width: 2000px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
