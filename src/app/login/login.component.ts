@@ -23,6 +23,9 @@ export class LoginComponent implements DoCheck {
   contrasena : string;
   constructor(public apiService : ApiService, public servicios : Servicios,
   private router: Router, private alerta:Alerta,private idioma:Idioma) {
+    if (localStorage.getItem('ingresado') == 'ingresado') {
+      this.router.navigate(['/home'])
+    }
     this.online$ = merge(
       of(navigator.onLine),
       fromEvent(window, 'online').pipe(mapTo(true)),
@@ -62,6 +65,7 @@ export class LoginComponent implements DoCheck {
         localStorage.setItem('user', User.usuario);
         this.alerta.presentarAlerta('Ingresado correctamente');
         this.intento=false;
+        localStorage.setItem('ingresado','ingresado')
         this.router.navigate(['/home']);
         },(err) =>{
           console.log(err)

@@ -42,22 +42,26 @@ export class HomeComponent implements OnDestroy {
   alertaBool = false;
   private _mobileQueryListener: () => void;
   @HostListener('window:popstate', ['$event'])
-    async onPopState($event) {
+  async onPopState($event) {
     this.alerta.cancelar()
-    if (!this.alertaBool){this.alerta.presentarAlerta("Presiona una vez mas para salir")}
+    if (!this.alertaBool) { this.alerta.presentarAlerta("Presiona una vez mas para salir") }
     this.alertaBool = true;
-    await setTimeout(()=>{ 
-      history.pushState(null,null,document.URL);
-      this.alertaBool = false},4000) ;
-}
+    await setTimeout(() => {
+      history.pushState(null, null, document.URL);
+      this.alertaBool = false
+    }, 4000);
+  }
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
     { value: 'pizza-1', viewValue: 'Pizza' },
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
-    private router: Router, private alerta: Alerta ) {
-    history.pushState(null,null,document.URL)
+    private router: Router, private alerta: Alerta) {
+    if (localStorage.getItem('ingresado') != 'ingresado') {
+      this.router.navigate([''])
+    }
+    history.pushState(null, null, document.URL)
     this.mobileQuery = media.matchMedia('(max-width: 2000px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -67,7 +71,7 @@ export class HomeComponent implements OnDestroy {
       fromEvent(window, 'offline').pipe(mapTo(false))
     )
     this.networkStatus()
-    this.idiomas= JSON.parse(localStorage.getItem('idioma'))
+    this.idiomas = JSON.parse(localStorage.getItem('idioma'))
     console.log(this.idiomas)
   }
 
@@ -94,8 +98,8 @@ export class HomeComponent implements OnDestroy {
   }
 
   izquierda(evt) {
-    if(evt.changedPointers[0].screenX-evt.deltaX <= 40){
-      Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ?  this.abrirMenu(): null) : '';
+    if (evt.changedPointers[0].screenX - evt.deltaX <= 40) {
+      Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.abrirMenu() : null) : '';
     }
     else {
       Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.izq() : this.rigth()) : '';
@@ -119,10 +123,11 @@ export class HomeComponent implements OnDestroy {
   }
   @ViewChild('snav') snav: any;
 
-  abrirMenu(){
-  this.snav.open()}
-  
-  cerrarMenu(evt){
-    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null: this.snav.close()) : '';
+  abrirMenu() {
+    this.snav.open()
+  }
+
+  cerrarMenu(evt) {
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null : this.snav.close()) : '';
   }
 }

@@ -5,6 +5,8 @@ import {ApiService} from '../api.service'
 import {GenerarCartasComponent} from '../generar-cartas/generar-cartas.component'
 import {Alerta} from '../funciones/alerta' 
 import {internetComponent} from '../funciones/internet'
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-form-posicion-consolidada',
@@ -17,7 +19,7 @@ export class FormPOSICIONCONSOLIDADAComponent implements OnInit {
   idiomas: any;
   cedula : string;
   internet : internetComponent;
-  constructor(public apiService : ApiService, public alerta: Alerta) { 
+  constructor(public apiService : ApiService, public alerta: Alerta, private router : Router) { 
     this.internet = new internetComponent
     this.idiomas= JSON.parse(localStorage.getItem('idioma'))
     console.log(this.idiomas)
@@ -45,6 +47,7 @@ posicionConsolidada(){
            this.nombre = null;
            if (err.error){
             this.alerta.presentarAlerta(err.error.mensajeUsuario)
+            if(err.error.mensaje == "Error de autenticación via token JWT.") {this.logout()}
            }
            else 
            this.alerta.presentarAlerta('Error con el Servidor')
@@ -65,5 +68,9 @@ posicionConsolidada(){
     this.idForm.reset()
     this.idForm.clearValidators()
     
+  }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }
