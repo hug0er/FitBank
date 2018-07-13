@@ -109,4 +109,12 @@ export class Idioma{
     }
     localStorage.setItem('idioma',JSON.stringify(this.idiomas));
   }
+
+  toEspanol(){
+    return this.espanol
+    }
+    toEnglish(){
+    return this.ingles
+    }
+    
 }

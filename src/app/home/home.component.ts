@@ -15,7 +15,7 @@ import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
-
+import {Idioma} from '../funciones/idioma'
 
 
 export interface Food {
@@ -56,7 +56,7 @@ export class HomeComponent implements OnDestroy {
     { value: 'pizza-1', viewValue: 'Pizza' },
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
+  constructor(private idm : Idioma, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
     private router: Router, private alerta: Alerta) {
     if (localStorage.getItem('ingresado') != 'ingresado') {
       this.router.navigate([''])
@@ -129,5 +129,13 @@ export class HomeComponent implements OnDestroy {
 
   cerrarMenu(evt) {
     const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null : this.snav.close()) : '';
+  }
+
+  espanol(){
+    this.idiomas = this.idm.toEspanol()
+  }
+
+  ingles(){
+    this.idiomas = this.idm.toEnglish()
   }
 }

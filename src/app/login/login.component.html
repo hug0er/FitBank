@@ -22,8 +22,6 @@
         <br>
         <br>
         <button class="button" (click)="login()" [class.offline]=!internet fxFlexFill [disabled]=!activado>Ingresar</button>
-        <div>No</div>
-
     </form>
     <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
 </div>

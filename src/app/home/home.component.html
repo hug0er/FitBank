@@ -34,6 +34,8 @@
                 </button>
                 <mat-menu #CerrarSesion="matMenu">
                     <button mat-menu-item (click)=logout()>{{idiomas.CerrarSesion}}</button>
+                    <button mat-menu-item (click)=espanol()>Español</button>
+                    <button mat-menu-item (click)=ingles()>English</button>
                 </mat-menu>
             </mat-toolbar>
             <mat-tab-group class="tabs" [class.offline]=!internet (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
