@@ -94,7 +94,13 @@ export class HomeComponent implements OnDestroy {
   }
 
   izquierda(evt) {
-    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.izq() : this.rigth()) : '';
+    console.log(evt.changedPointers[0].screenX-evt.deltaX);
+    if(evt.changedPointers[0].screenX-evt.deltaX <= 125){
+      Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ?  this.abrirMenu(): null) : '';
+    }
+    else {
+      Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.izq() : this.rigth()) : '';
+    }
   }
 
   izq() {
@@ -113,6 +119,10 @@ export class HomeComponent implements OnDestroy {
     }
   }
   @ViewChild('snav') snav: any;
+
+  abrirMenu(){
+  this.snav.open()}
+  
   cerrarMenu(evt){
     const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null: this.snav.close()) : '';
   }
