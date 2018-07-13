@@ -12,7 +12,7 @@ export class Alerta{
     
     presentarAlerta(msg:string){
         let config = new MatSnackBarConfig();
-        config.duration = 5000;
+        config.duration = 4000;
         this.snackBar.open(msg,null,config);
     }
 
@@ -37,6 +37,10 @@ export class Alerta{
         };
         
         this.dialog.open(DialogoComponent, dialogConfig)
+    }
+
+    cancelar(){
+        this.snackBar.dismiss()
     }
 
 }

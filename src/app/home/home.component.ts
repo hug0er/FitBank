@@ -39,15 +39,16 @@ export class HomeComponent implements OnDestroy {
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
   selectedIndex: number = 0;
-  salida: boolean = false;
+  alertaBool = false;
   private _mobileQueryListener: () => void;
   @HostListener('window:popstate', ['$event'])
-  onPopState($event) {
-    if(this.salida){
-      history.back();
-    }else{
+    async onPopState($event) {
+    this.alerta.cancelar()
+    if (!this.alertaBool){this.alerta.presentarAlerta("Presiona una vez mas para salir")}
+    this.alertaBool = true;
+    await setTimeout(()=>{ 
       history.pushState(null,null,document.URL);
-    }
+      this.alertaBool = false},4000) ;
 }
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
@@ -56,7 +57,7 @@ export class HomeComponent implements OnDestroy {
   ];
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
     private router: Router, private alerta: Alerta,public idioma : IdiomaComponent ) {
-      history.pushState(null,null,document.URL);
+    history.pushState(null,null,document.URL)
     this.mobileQuery = media.matchMedia('(max-width: 2000px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -117,5 +118,9 @@ export class HomeComponent implements OnDestroy {
   ingles(){
 
     this.idiomas = this.idioma.getIngles(); 
+  }
+
+  sleep(){
+
   }
 }
