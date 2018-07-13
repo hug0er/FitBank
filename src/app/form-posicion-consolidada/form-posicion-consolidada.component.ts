@@ -52,11 +52,11 @@ posicionConsolidada(){
     })
   }else{
     this.alerta.presentarAlerta('No esta conectado');
+    this.intento=false;
     this.nombre = JSON.parse((localStorage.getItem('data1'))).clientName
     this.datos = JSON.parse((localStorage.getItem('data1'))).array
     this.alerta.generarDialogo()
     this.cedula = localStorage.getItem('c1')
-    this.intento=false;
   }
   }
   close(){

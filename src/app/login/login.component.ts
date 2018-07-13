@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -15,10 +15,11 @@ import { Idioma} from '../funciones/idioma';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements DoCheck {
   online$: Observable<boolean>;
   internet: boolean;
   usuario : string;
+  activado : boolean=false;
   contrasena : string;
   constructor(public apiService : ApiService, public servicios : Servicios,
   private router: Router, private alerta:Alerta,private idioma:Idioma) {
@@ -37,8 +38,12 @@ export class LoginComponent implements OnInit {
     })
    }
 
-  ngOnInit() {
-
+  ngDoCheck() {
+   /*  activated(){ */
+      if(this.usuario && this.contrasena){
+        this.activado=true;
+      }
+   /*  } */
   }
   
   usernameFormControl = new FormControl('', [
