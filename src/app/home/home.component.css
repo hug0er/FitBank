@@ -1,16 +1,22 @@
+    /* Clase para la pagina de inicio:
+    el alto y ancho ocupa toda la pagina*/
     .inicioPag {
         height: 100%;
         width: 100%;
         margin: 0 !important;
         padding: 0 !important;
     }
-    
-    .example-container {
+    /* Clase del contenedor del sidenav:
+    ajusta el ancho al 100%*/
+    .sidenav-container {
         margin: 0 !important;
         padding: 0 !important;
         width: 100%;
     }
-    
+    /* Clase del sidenav:
+    Centra el contenido del sidenav
+    Ajusta el ancho maximo
+    Ajusta el margen superior*/
     .example-sidenav {
         align-items: center;
         justify-content: center;
@@ -18,12 +24,14 @@
         max-width: 200px;
         margin-top: -60px;
     }
-    
+    /* Clase del fondo logotipo en sidenav */
     .borde {
         border-bottom: 2px solid;
         margin-bottom: 10px;
     }
-    
+    /* Clase del logotipo en sidenav:
+    Ajusta la posicion automaticamente relativo al tamano del sidenav
+    Ajusta el ancho y los margenes superior e inferior */
     .imagen2 {
         display: block;
         margin-left: auto;
@@ -32,21 +40,26 @@
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    
+    /* Clase del logotipo en sidenav offline:
+    cambia elfiltro de la imagen cuando se esta
+    offline */
     .imagen2.offline {
         filter: grayscale(75%) contrast(100%);
     }
-    
+    /* Clase de la cabecera del toolbar */
     .cabecera {
         min-height: 20%;
         max-height: 20%;
         transition: background-color 2s ease;
     }
-    
+    /* Clase de la cabecera del toolbar offline:
+    Cambia el color de fondo cuando esta offline*/
     .cabecera.offline {
         background-color: #A0A0A0;
     }
-    
+    /* Clase del boton Menu:
+    Ajusta la posicion
+    y las dimensiones */
     .boton {
         display: block;
         position: relative;
@@ -64,11 +77,12 @@
         border: none;
         background: transparent;
     }
-    
+    /* Evita que se muestre el borde del boton al seleccionarse */
     .boton:focus {
         outline: none;
     }
-    
+    /* Clase de los logotipo del toolbar :
+    Lo centra automaticamente*/
     .imagen {
         display: block;
         margin-left: auto;
@@ -76,20 +90,22 @@
         width: 150px;
         transition: filter 2s ease;
     }
-    
+     /* Clase de los logotipo del toolbar offline:
+    Cambia el filtro de la imagen cuando se esta offline*/
     .imagen.offline {
         filter: grayscale(75%) contrast(100%);
     }
-    
-    .mat-button {
-        text-align: left;
-        width: 100%;
-    }
-    
+
+
+
+    /* Clase del fondo del icono de offline:
+    ajusta el pargen superior */
     .icono {
         margin-top: 10px;
     }
-    
+    /* Clase del tab group:
+    Ajusta el tamano de fuente,
+    la posicion,el alto y ancho */
     .tabs {
         font-size: 1em;
         position: static;
@@ -97,15 +113,19 @@
         width: 100%;
         transition: 2s ease;
     }
-    
+    /* Clase del tab group offline:
+    Cambia el color de fondo cuando se esta offline
+     */
     .tabs.offline {
         background-color: gray;
     }
-    
+    /* Clase del fondo de los formularios: */
     .contenido {
         background-color: rgb(249, 249, 249);
     }
-    
+    /* Clase ocultar un boton:
+    correccion de un error de la libreria
+    angular material */
     .oculto {
         height: 0px;
         width: 0px;

@@ -1,16 +1,17 @@
+/* Clase de la etiqueta h1 */
 h1 {
     height: 100px;
     width: 100%;
     font-size: 18%;
-    /* background: #18aa8d; */
-    /* color: white; */
+
     line-height: 150%;
     border-radius: 3px 3px 0 0;
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-    /*  background-color: #18aa8d;
-    transition: background-color 1s ease; */
-}
 
+}
+/* Clase imagen logotipo login:
+Centra la imagen automaticamente
+ */
 .image {
     -webkit-filter: drop-shadow(0px 0px 1px #222);
     filter: drop-shadow(0px 0px 1px #222);
@@ -19,34 +20,40 @@ h1 {
     margin-right: auto;
     transition: filter 3s ease;
 }
-
+/* Clase imagen logotipo login offline:
+Cmabia el filtro de la imagen a escala de grises
+cuando se esta offline*/
 .image.offline {
     filter: grayscale(75%) contrast(100%);
 }
-
+/* Fondo de la imagen logotipo:
+Esta definido el color de fondo*/
 .fondo {
     height: 105px;
     background-color: #18aa8d;
     text-align: center;
-    /* color: #fff; */
     line-height: 48px;
     transition: background-color 1s ease;
 }
-
+/* Fondo de la imagen logotipo offline:
+Cmabia el fondo del logotipo
+cuando se esta offline*/
 .fondo.offline {
     background-color: grey;
 }
-
+/* Clase del icono offline del login:
+Centra el icono del login*/
 .status {
     height: 20px;
     background-color: #ffffff;
     text-align: center;
     /* color: #fff; */
     line-height: 48px;
-    transition: background-color 1s ease;
+    /* transition: background-color 1s ease; */
 }
 
-.button {
+/* Clase de la etiqueta button*/
+button {
     border: none;
     background: #1abc9c;
     cursor: pointer;
@@ -59,23 +66,24 @@ h1 {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
     transition: background-color 1s ease;
 }
-
-.button.offline {
+/* Clase de la etiqueta button offline */
+button.offline {
     background-color: grey;
 }
 
+/* Cambia el tamano del boton de acuerdo al tamano de la pantalla*/
 @media screen and (max-width: 800px) {
-    .button {
+    button {
         font-size: 5vw;
     }
 }
-
+/* Cambia el tamano del boton de acuerdo al tamano de la pantalla*/
 @media screen and (min-width: 801px) {
-    .button {
+    button {
         font-size: 3.25vw;
     }
 }
-
+/* Animacion del boton "Ingresar" */
 button:hover {
     -webkit-transform: translateY(-3px);
     -ms-transform: translateY(-3px);

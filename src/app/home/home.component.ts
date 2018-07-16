@@ -42,7 +42,6 @@ export class HomeComponent implements OnDestroy {
   alertaBool = false;
   private _mobileQueryListener: () => void;
   @HostListener('window:popstate', ['$event'])
-
   async onPopState($event) {
     this.alerta.cancelar()
     if (!this.alertaBool) { this.alerta.presentarAlerta("Presiona una vez mas para salir") }
@@ -52,7 +51,6 @@ export class HomeComponent implements OnDestroy {
       this.alertaBool = false
     }, 4000);
   }
-  
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
     { value: 'pizza-1', viewValue: 'Pizza' },
@@ -86,6 +84,11 @@ export class HomeComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
   move(num) {
     this.selectedIndex = num;
     console.log(this.bot1);
@@ -93,15 +96,17 @@ export class HomeComponent implements OnDestroy {
   selectedIndexChange(val) {
     this.selectedIndex = val;
   }
-  deslizar(evt) {
+
+  izquierda(evt) {
     if (evt.changedPointers[0].screenX - evt.deltaX <= 40) {
       Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.abrirMenu() : null) : '';
     }
     else {
-      Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.left() : this.rigth()) : '';
+      Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.izq() : this.rigth()) : '';
     }
   }
-  left() {
+
+  izq() {
     if (this.selectedIndex == 0) {
       this.selectedIndex = 0;
     } else {
@@ -116,18 +121,14 @@ export class HomeComponent implements OnDestroy {
       this.selectedIndex += 1
     }
   }
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['']);
-  }
-
   @ViewChild('snav') snav: any;
+
   abrirMenu() {
     this.snav.open()
   }
 
   cerrarMenu(evt) {
-    Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null : this.snav.close()) : '';
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? null : this.snav.close()) : '';
   }
 
   espanol(){
