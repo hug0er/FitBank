@@ -1,12 +1,12 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {ApiService} from '../api.service';
-import {Router, ActivatedRoute} from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Servicios } from '../funciones/encryptar';
 import { Alerta } from '../funciones/alerta';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
-import { Idioma} from '../funciones/idioma';
+import { Idioma } from '../funciones/idioma';
 
 
 @Component({
@@ -18,11 +18,17 @@ import { Idioma} from '../funciones/idioma';
 export class LoginComponent implements DoCheck {
   online$: Observable<boolean>;
   internet: boolean;
-  usuario : string;
-  activado : boolean=false;
-  contrasena : string;
-  constructor(public apiService : ApiService, public servicios : Servicios,
-  private router: Router, private alerta:Alerta,private idioma:Idioma) {
+  usuario: string;
+  activado: boolean;
+  contrasena: string;
+  intento : boolean
+  constructor(public apiService: ApiService, 
+    public servicios: Servicios,
+    private router: Router, 
+    private alerta: Alerta, 
+    private idioma: Idioma) {
+      this.intento = false;
+      this.activado = false
     this.online$ = merge(
       of(navigator.onLine),
       fromEvent(window, 'online').pipe(mapTo(true)),
@@ -30,48 +36,46 @@ export class LoginComponent implements DoCheck {
     )
     this.networkStatus()
     this.idioma.getIdioma();
-   }
+  }
 
-   public networkStatus(){
+  public networkStatus() {
     this.online$.subscribe(value => {
       this.internet = value;
     })
-   }
+  }
 
   ngDoCheck() {
-   /*  activated(){ */
-      if(this.usuario && this.contrasena){
-        this.activado=true;
-      }
-   /*  } */
+    if (this.usuario && this.contrasena) {
+      this.activado = true;
+    }
   }
-  
+
   usernameFormControl = new FormControl('', [
     Validators.required,
   ]);
   passwordFormControl = new FormControl('', [
     Validators.required,
   ]);
-  intento = false;
-  login () {
-    this.intento=true;
-    if (!this.alerta.revisarInternet()){
-      let User = {"usuario": this.usuario, "contrasena" : this.servicios.toAES(this.contrasena), "desencriptar" : "1" }
-      this.apiService.loginProvider(User, '/oauth').then((data : any) =>{
+
+  login() {
+    this.intento = true;
+    if (!this.alerta.revisarInternet()) {
+      let User = { "usuario": this.usuario, "contrasena": this.servicios.toAES(this.contrasena), "desencriptar": "1" }
+      this.apiService.loginProvider(User, '/oauth').then((data: any) => {
         localStorage.setItem('id_token', data.token);
         localStorage.setItem('user', User.usuario);
         this.alerta.presentarAlerta('Ingresado correctamente');
-        this.intento=false;
-        localStorage.setItem('ingresado','ingresado')
+        this.intento = false;
+        localStorage.setItem('ingresado', 'ingresado')
         this.router.navigate(['/home']);
-        },(err) =>{
-          console.log(err)
-          this.intento=false;
-          this.alerta.presentarAlerta(err.error.mensajeUsuario)
-          })
-    }else{
+      }, (err) => {
+        console.log(err)
+        this.intento = false;
+        this.alerta.presentarAlerta(err.error.mensajeUsuario)
+      })
+    } else {
       this.alerta.presentarAlerta('No esta conectado');
-      this.intento=false;
+      this.intento = false;
     }
   }
 }
