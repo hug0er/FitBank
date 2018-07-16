@@ -21,14 +21,14 @@ export class LoginComponent implements DoCheck {
   usuario: string;
   activado: boolean;
   contrasena: string;
-  intento : boolean
-  constructor(public apiService: ApiService, 
+  intento: boolean
+  constructor(public apiService: ApiService,
     public servicios: Servicios,
-    private router: Router, 
-    private alerta: Alerta, 
+    private router: Router,
+    private alerta: Alerta,
     private idioma: Idioma) {
-      this.intento = false;
-      this.activado = false
+    this.intento = false;
+    this.activado = false
     this.online$ = merge(
       of(navigator.onLine),
       fromEvent(window, 'online').pipe(mapTo(true)),
