@@ -12,7 +12,7 @@ import {FormDEPOSITOSComponent} from './form-depositos/form-depositos.component'
 import {FormRETIROSComponent} from './form-retiros/form-retiros.component';
 import {GenerarCartasComponent} from './generar-cartas/generar-cartas.component'
 import {MatCardModule} from '@angular/material/card';
-
+//En este archivo estan todos las paginas que usamos y como nos direccionamos
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -45,4 +45,3 @@ export const routingComponents = [LoginComponent,
   FormRETIROSComponent,
   GenerarCartasComponent,
 ]
-

@@ -1,24 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+//Api y applicacion (en environment esta el link del server)
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { MatInputModule } from '@angular/material'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialModule} from './material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApiService} from './api.service';
+//angular
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
+//modules definidos en otros archivos
+import {MaterialModule} from './material.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+//funciones
 import { Servicios } from './funciones/encryptar';
 import { Alerta } from './funciones/alerta';
 import {internetComponent} from './funciones/internet'
+import { Idioma} from './funciones/idioma';
+//hammer (movimiento tactil)
 import 'hammerjs'
 import {HammerGestureConfig,HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
-import {MatDialogModule} from '@angular/material'
 import {DialogoComponent} from './dialogo/dialogo.component'
-import { Idioma} from './funciones/idioma';
 
 
 
@@ -42,10 +45,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
   ],
   imports: [
     BrowserModule,
-    MatDialogModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
-    MatInputModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,

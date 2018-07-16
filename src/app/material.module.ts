@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-
+//En este archivo esta todos los modulos que usamos de angular material
 import {
   MatSidenavModule,
   MatToolbarModule,
@@ -15,7 +15,8 @@ import {
   MatSlideToggleModule,
   MatSnackBarModule,
   MatProgressBarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -34,7 +35,8 @@ import {
     MatSlideToggleModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   exports: [
     MatSidenavModule,
@@ -51,7 +53,8 @@ import {
     MatSlideToggleModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}
