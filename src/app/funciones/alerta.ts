@@ -1,4 +1,4 @@
-import { Injectable, ComponentRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {MatDialog, MatDialogConfig} from '@angular/material'
 import { DialogoComponent } from '../dialogo/dialogo.component';
