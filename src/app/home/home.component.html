@@ -40,38 +40,38 @@
             </mat-toolbar>
             <mat-tab-group class="tabs" [class.offline]=!internet (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
                 <mat-tab label={{idiomas.PosicionConsolidada}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-posicion-consolidada></app-form-posicion-consolidada>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.SaldoAhorros}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-saldo-ahorros class="deb"></app-form-saldo-ahorros>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.SaldoPrestamos}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-saldo-prestamos></app-form-saldo-prestamos>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.CreacionPersonas}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-creacion-de-personas></app-form-creacion-de-personas>
                     </div>
 
                 </mat-tab>
                 <mat-tab label={{idiomas.AperturaCuentas}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-apertura-de-cuentas></app-form-apertura-de-cuentas>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.Depositos}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-depositos></app-form-depositos>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.Retiros}}>
-                    <div class="contenido" (swipe)="izquierda($event)">
+                    <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-retiros></app-form-retiros>
                     </div>
 

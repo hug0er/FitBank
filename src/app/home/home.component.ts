@@ -31,15 +31,15 @@ export interface Food {
 
 export class HomeComponent implements OnDestroy {
   @ViewChild('bot1') bot1: ElementRef;
-  eventText = '';
+  eventText : string;
   online$: Observable<boolean>;
   internet: boolean;
   idiomas: any;
   mobileQuery: MediaQueryList;
-  minDate = new Date(2000, 0, 1);
-  maxDate = new Date(2020, 0, 1);
-  selectedIndex: number = 0;
-  alertaBool = false;
+  minDate : Date;
+  maxDate : Date;
+  selectedIndex: number;
+  alertaBool : boolean;
   private _mobileQueryListener: () => void;
   @HostListener('window:popstate', ['$event'])
   async onPopState($event) {
@@ -58,6 +58,11 @@ export class HomeComponent implements OnDestroy {
   ];
   constructor(private idm : Idioma, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public apiService: ApiService, public servicios: Servicios,
     private router: Router, private alerta: Alerta) {
+      this.eventText = '';
+      this.minDate = new Date(2000, 0, 1);
+      this.maxDate = new Date(2020, 0, 1);
+      this.selectedIndex = 0;
+      this.alertaBool = false;
     if (localStorage.getItem('ingresado') != 'ingresado') {
       this.router.navigate([''])
     }
@@ -97,7 +102,7 @@ export class HomeComponent implements OnDestroy {
     this.selectedIndex = val;
   }
 
-  izquierda(evt) {
+  deslizar(evt) {
     if (evt.changedPointers[0].screenX - evt.deltaX <= 40) {
       Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? this.abrirMenu() : null) : '';
     }
