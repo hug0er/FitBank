@@ -1,6 +1,7 @@
 <div [class.example-is-mobile]="mobileQuery.matches" class="inicioPag">
     <mat-sidenav-container (swipe)="cerrarMenu($event)" class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav (swipe)="cerrarMenu($event)" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" closed class="example-sidenav">
+        <mat-sidenav #snav (swipe)="cerrarMenu($event)" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56" closed class="example-sidenav">
             <div class="borde">
                 <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen2" [class.offline]=!internet/>
             </div>
@@ -26,8 +27,11 @@
                     <mat-icon>menu</mat-icon>
                 </button>
                 <img src="assets/resources/mipmap-hdpi/logo_client.png" class="imagen" [class.offline]=!internet/>
-                <div class="icono" *ngIf=!internet>
+                <!-- <div class="icono" *ngIf=!internet>
                     <mat-icon>signal_wifi_off</mat-icon>
+                </div> -->
+                <div class="textoffline" *ngIf=!internet>
+                    offline
                 </div>
                 <button mat-icon-button [matMenuTriggerFor]="CerrarSesion">
                     <mat-icon>more_vert</mat-icon>

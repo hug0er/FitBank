@@ -130,3 +130,7 @@
         height: 0px;
         width: 0px;
     }
+    .textoffline{
+        color: red;
+        font-style: italic;
+    }
