@@ -2,8 +2,14 @@
     <form>
         <mat-form-field fxFlexFill>
             <input matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm" [(ngModel)]="cedula">
+            <mat-error *ngIf="idForm.hasError('maxlength')">
+                <strong>{{idiomas.msjExedeTamano}}</strong>
+            </mat-error>
             <mat-error *ngIf="idForm.hasError('required')">
                 <strong>{{idiomas.msjIdRequerido}}</strong>
+            </mat-error>
+            <mat-error *ngIf="idForm.hasError('pattern')">
+                <strong>{{idiomas.msjSoloNumeros}} </strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
@@ -13,7 +19,11 @@
         <app-generar-cartas *ngFor="let dato of datos" [dato]="dato" class="deb"></app-generar-cartas>
     </form>
 </div>
-<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="cedula" class="float">
-    <button mat-fab (click)="posicionConsolidada()" class="myfloat" color="primary"><mat-icon color="white">check_circle</mat-icon></button>
-    <button mat-fab (click)="close()" class="myfloat" color="warn"><mat-icon>cancel</mat-icon></button>
+<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm.valid" class="float">
+    <button mat-fab (click)="posicionConsolidada()" class="myfloat" color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+    <button mat-fab (click)="close()" class="myfloat" color="warn">
+        <mat-icon>cancel</mat-icon>
+    </button>
 </div>

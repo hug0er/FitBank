@@ -52,6 +52,8 @@ export class Idioma{
     'Cantidad': 'Quantity',
     'msjIdRequerido': 'The identification is required',
     'msjContrasenaRequerida': 'The password is required',
+    'msjExedeTamano' : 'The field has too many digits',
+    'msjSoloNumeros':'The field can only recieve numbers'
   }
   espanol = {
     'Usuario': 'Usuario',
@@ -99,6 +101,8 @@ export class Idioma{
     'Cantidad': 'Cantidad',
     'msjIdRequerido': 'La identificacion es requerida',
     'msjContrasenaRequerida': 'La contraseña es requerida',
+    'msjExedeTamano' : 'El campo tiene demasiados digitos',
+    'msjSoloNumeros':'El campo solo puede recibir numeros'
   }
   idiomas : any;
   getIdioma(){

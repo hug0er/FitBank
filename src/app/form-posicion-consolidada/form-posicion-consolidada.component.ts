@@ -27,7 +27,7 @@ export class FormPOSICIONCONSOLIDADAComponent {
     this.idiomas = JSON.parse(localStorage.getItem('idioma'))
     this.intento = false
   }
-  idForm = new FormControl('', [Validators.required,]);
+  idForm = new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]*$')]);
 
   posicionConsolidada() {
     this.intento = true;
