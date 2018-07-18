@@ -8,19 +8,36 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Nombre del Socio" type="text">
+            <input matInput placeholder="Nombre del Socio" type="text" [formControl]="nameForm2">
         </mat-form-field>
-        <mat-form-field fxFlexFill>
-            <mat-select placeholder="Cuenta">
+        <mat-form-field *ngIf="internet.internet" fxFlexFill>
+            <mat-select placeholder="Cuenta" [formControl]="cuentaForm2">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                     {{food.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <mat-form-field *ngIf="!internet.internet" fxFlexFill>
+            <input matInput placeholder="Cuenta" type="text" [formControl]="cuentaForm" name="cuenta">
+        </mat-form-field>
         <mat-form-field fxFlexFill>
             <input matInput placeholder="Cantidad" type="text">
         </mat-form-field>
-        <button mat-button fxFlexFill> Cancelar</button>
-        <button mat-button fxFlexFill> Ingresar</button>
     </form>
+</div>
+<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid && !nameForm2.valid" class="float">
+    <button mat-fab (click)="campos()" class="myfloat" color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+    <button mat-fab (click)="close()" class="myfloat" color="warn">
+        <mat-icon>cancel</mat-icon>
+    </button>
+</div>
+<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid && nameForm2.valid && (cuentaForm.valid && !internet.internet || cuentaForm2.valid && internet.internet)" class="float">
+    <button mat-fab (click)="depositar()" class="myfloat" color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+    <button mat-fab (click)="close()" class="myfloat" color="warn">
+        <mat-icon>cancel</mat-icon>
+    </button>
 </div>
