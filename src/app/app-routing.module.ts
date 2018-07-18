@@ -12,6 +12,7 @@ import {FormDEPOSITOSComponent} from './form-depositos/form-depositos.component'
 import {FormRETIROSComponent} from './form-retiros/form-retiros.component';
 import {GenerarCartasComponent} from './generar-cartas/generar-cartas.component'
 import {MatCardModule} from '@angular/material/card';
+import {TareasPendientesComponent} from './tareas-pendientes/tareas-pendientes.component'
 //En este archivo estan todos las paginas que usamos y como nos direccionamos
 
 const routes: Routes = [
@@ -44,4 +45,6 @@ export const routingComponents = [LoginComponent,
   FormDEPOSITOSComponent,
   FormRETIROSComponent,
   GenerarCartasComponent,
+  TareasPendientesComponent,
+
 ]

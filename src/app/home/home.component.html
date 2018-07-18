@@ -74,7 +74,11 @@
                     <div class="contenido" (swipe)="deslizar($event)">
                         <app-form-retiros></app-form-retiros>
                     </div>
-
+                </mat-tab>
+                <mat-tab label="Tareas Pendientes">
+                    <div class="contenido" (swipe)="deslizar($event)">
+                        <app-tareas-pendientes></app-tareas-pendientes>
+                    </div>
                 </mat-tab>
             </mat-tab-group>
         </mat-sidenav-content>

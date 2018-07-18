@@ -16,6 +16,7 @@ import { Alerta } from '../funciones/alerta';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
 import {Idioma} from '../funciones/idioma'
+import {TareasPendientesComponent} from '../tareas-pendientes/tareas-pendientes.component'
 
 
 export interface Food {

@@ -1,0 +1,11 @@
+<mat-card *ngFor="let tarea of tareas" (click)="enviar(tarea)">
+    <mat-card-header>
+        <mat-card-title>Depósitos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p><strong>Id del socio: </strong>{{tarea.id}}</p>
+        <p><strong>Nombre Socio: </strong>{{tarea.nombre}}</p>
+        <p><strong>Número Cuenta: </strong>{{tarea.cuenta}}</p>
+        <p><strong>Cantidad: </strong>{{tarea.cantidad}}</p>
+    </mat-card-content>
+</mat-card>
