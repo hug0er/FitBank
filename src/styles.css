@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* Clase para la apariencia del cuerpo del html
+Define la altura, el ancho. tamano de fuente y los margenes. */
 html,
 body {
     height: 100%;
@@ -11,7 +13,10 @@ body {
     margin: 0 !important;
     padding: 0 !important;
 }
+/* Conjunto de declaraciones que se ejecutaran cuando se emplee la aplicacion en el navegador de mozilla */
 @supports (-moz-appearance:none) {
+    /* Clase para la apariencia del cuerpo del html
+Define la altura, el ancho. tamano de fuente y los margenes. */
     body {
         height: 100%;
         width: 100%;
@@ -21,12 +26,15 @@ body {
         margin: 0 !important;
         padding: 0 !important;
     }
+/* Clase estandar de los formularios
+ajusta altura minima, ancho, y margenes derecho e izquierdo. */
     .example-form {
         min-height: 83.5vh;
         width: 90%;
         margin-left: 5%;
         margin-right: 5%;
     }
+    /* Clase fondo de los botones cancelar y aceptar */
     .float {
         position: fixed;
         width: 60px;
@@ -34,10 +42,12 @@ body {
         bottom: 40px;
         right: 40px;
     }
-    
+    /* Clase botones cancelar y aceptar */
     .my-float {
         margin-top: 22px;
     }
+    /* Clase de la etiqueta h1 
+    ajusta la altura, ancho, tamano de fuente*/
     h1 {
         height: 100px;
         width: 100%;
@@ -50,22 +60,28 @@ body {
         /*  background-color: #18aa8d;
         transition: background-color 1s ease; */
     }
+        /* Clase de mat-form-field
+        cambia el display por defecto*/
     .mat-form-field{
         display: inline !important;
     }
+/* Ajusta los margenes y las alturas de los botones */
     .button{
         margin-top: 0% !important;
         min-height: 0% !important;
         height: 20% !important;
     }
 }
+
+/* Clase estandar de los formularios
+ajusta altura minima, ancho, y margenes derecho e izquierdo. */
 .example-form {
     min-height: 83.5vh;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
 }
-
+    /* Clase fondo de los botones cancelar y aceptar */
 .float {
     position: fixed;
     width: 60px;
@@ -73,7 +89,7 @@ body {
     bottom: 40px;
     right: 40px;
 }
-
+    /* Clase botones cancelar y aceptar */
 .my-float {
     margin-top: 22px;
 }
