@@ -20,7 +20,6 @@ export class FormDEPOSITOSComponent implements OnInit {
   constructor( private api: ApiService) { 
     this.internet = new internetComponent;
     this.foods =[];
-    this.foods = this.transformador([1221,121,122121]);
     console.log(this.foods)
   }
 
@@ -41,16 +40,16 @@ export class FormDEPOSITOSComponent implements OnInit {
   nameForm2 = new FormControl('', [
     Validators.required,
   ]);
+  cantidadForm = new FormControl('', [
+    Validators.required,
+  ]);
 
   campos(){
-    console.log(this.idForm2)
     this.api.postProvider('/casCliente', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user')}).then(
       (data : any)=>{
-    /*    this.nombre = data.cname; */
-        this.foods = this.transformador(data.ccuentas);
-        console.log(data)
+        this.nombre = data.clientName;
+        this.foods = this.transformador(data.array);
       }, (err)=>{
-        console.log(err)
       }
     
     )
@@ -59,13 +58,35 @@ export class FormDEPOSITOSComponent implements OnInit {
     let lista = [];
 
     for (let i=0;i<value.length;i++)
-    lista.push({"value": value[i], "viewValue": value[i]}) 
+    lista.push({"value": value[i].cperson, "viewValue": value[i].cperson}) 
 
     return lista;
   }
 
   depositar(){
-    console.log('depositar')
+    if(navigator.onLine){
+      
+    }
+    else{
+      let lista: any = localStorage.getItem('tareas')
+      if (!lista){
+        lista = '['+ JSON.stringify(this.generarJson())+']';
+      }else{
+      lista= JSON.parse(lista)
+      lista.push(this.generarJson())
+      lista = JSON.stringify(lista)
+    }
+    localStorage.setItem('tareas',lista)
+    console.log(lista);
+  }
+  }
+  generarJson(){
+    return ({'id': this.idForm2.value, 'cuenta': this.cuentaForm.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')})
+  }
+  close(){
+    this.nombre = null;
+    this.idForm2.reset()
+    this.idForm2.clearValidators()
   }
 
 }
