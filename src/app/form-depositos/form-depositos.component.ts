@@ -48,7 +48,7 @@ export class FormDEPOSITOSComponent implements OnInit {
   ]);
 
   campos(){
-    this.api.postProvider('/casCliente', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user')}).then(
+    this.api.postProvider('/cuentasCliente', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user')}).then(
       (data : any)=>{
         this.nombreonl = data.clientName;
         this.foods = this.transformador(data.array);
@@ -61,7 +61,7 @@ export class FormDEPOSITOSComponent implements OnInit {
     let lista = [];
 
     for (let i=0;i<value.length;i++)
-    lista.push({"value": value[i].cperson, "viewValue": value[i].cperson}) 
+    lista.push({"value": value[i].ccuenta, "viewValue": value[i].ccuenta}) 
 
     return lista;
   }

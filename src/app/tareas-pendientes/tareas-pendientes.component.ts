@@ -50,6 +50,12 @@ export class TareasPendientesComponent implements DoCheck {
       }
     }
   }
+  cerrar(i) {
+    let prueba = this.tareas
+    prueba.splice(i, 1)
+    localStorage.setItem('tareas', JSON.stringify(prueba))
+
+  }
   logout() {
     this.router.navigate(['']);
   }
