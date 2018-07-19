@@ -1,7 +1,7 @@
 <div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
+            <input appHighlight matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
             <mat-error *ngIf="idForm2.hasError('required')">
                 La identificacion es
                 <strong>requerida</strong>
@@ -21,7 +21,7 @@
             <input matInput placeholder="Cuenta" type="text" [formControl]="cuentaForm" name="cuenta">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Cantidad" type="text" [formControl]="cantidadForm">
+            <input appHighlight matInput placeholder="Cantidad" type="text" [formControl]="cantidadForm">
         </mat-form-field>
     </form>
 </div>

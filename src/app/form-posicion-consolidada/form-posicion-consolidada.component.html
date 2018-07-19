@@ -1,7 +1,7 @@
 <div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm" [(ngModel)]="cedula">
+            <input appHighlight matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm" [(ngModel)]="cedula">
             <mat-error *ngIf="idForm.hasError('maxlength')">
                 <strong>{{idiomas.msjExedeTamano}}</strong>
             </mat-error>
