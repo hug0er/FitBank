@@ -7,8 +7,8 @@
                 <strong>requerida</strong>
             </mat-error>
         </mat-form-field>
-        <mat-form-field fxFlexFill>
-            <input matInput placeholder="Nombre del Socio" type="text" value={{nombre}}>
+        <mat-form-field fxFlexFill *ngIf="internet.internet">
+            <input matInput placeholder="Nombre del Socio" disabled type="text" value={{nombreonl}}>
         </mat-form-field>
         <mat-form-field *ngIf="internet.internet" fxFlexFill>
             <mat-select placeholder="Cuenta" [formControl]="cuentaForm2">
@@ -25,7 +25,7 @@
         </mat-form-field>
     </form>
 </div>
-<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid && !nombre" class="float">
+<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid && !nombreonl && internet.internet" class="float">
     <button mat-fab (click)="campos()" class="myfloat" color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>
@@ -33,7 +33,7 @@
         <mat-icon>cancel</mat-icon>
     </button>
 </div>
-<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid && (cuentaForm.valid && !internet.internet || cuentaForm2.valid && internet.internet)" class="float">
+<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid  && cantidadForm.valid && (cuentaForm.valid && !internet.internet || cuentaForm2.valid && internet.internet)" class="float">
     <button mat-fab (click)="depositar()" class="myfloat" color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>

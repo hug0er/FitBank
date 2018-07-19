@@ -3,6 +3,9 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material/core';
 import { internetComponent } from '../funciones/internet';
 import { ApiService } from '../api.service';
+import { Alerta } from '../funciones/alerta'
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -14,10 +17,10 @@ export class FormDEPOSITOSComponent implements OnInit {
   internet: internetComponent;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
-  nombre: string;
+  nombreonl: string;
   foods: any[];
 
-  constructor( private api: ApiService) { 
+  constructor( private api: ApiService,  public alerta: Alerta, private router: Router) { 
     this.internet = new internetComponent;
     this.foods =[];
     console.log(this.foods)
@@ -31,13 +34,7 @@ export class FormDEPOSITOSComponent implements OnInit {
   cuentaForm2 = new FormControl('', [
     Validators.required,
   ]);
-  nameForm = new FormControl('', [
-    Validators.required,
-  ]);
   idForm2 = new FormControl('', [
-    Validators.required,
-  ]);
-  nameForm2 = new FormControl('', [
     Validators.required,
   ]);
   cantidadForm = new FormControl('', [
@@ -47,7 +44,7 @@ export class FormDEPOSITOSComponent implements OnInit {
   campos(){
     this.api.postProvider('/casCliente', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user')}).then(
       (data : any)=>{
-        this.nombre = data.clientName;
+        this.nombreonl = data.clientName;
         this.foods = this.transformador(data.array);
       }, (err)=>{
       }
@@ -65,7 +62,17 @@ export class FormDEPOSITOSComponent implements OnInit {
 
   depositar(){
     if(navigator.onLine){
-      
+      let envio = {'id': this.idForm2.value, 'cuenta': this.cuentaForm2.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')}
+      this.api.postProvider('/sdeposit', localStorage.getItem('id_token'),envio).then((data: any) => {
+        this.alerta.presentarAlerta("Transacción Exitosa")
+      }, (err) =>{
+        if (err.error) {
+          this.alerta.presentarAlerta(err.error.mensajeUsuario)
+          if (err.error.mensaje == "Error de autenticación via token JWT.") { this.logout() }
+        }
+        else
+          this.alerta.presentarAlerta('Error con el Servidor')
+      })
     }
     else{
       let lista: any = localStorage.getItem('tareas')
@@ -84,9 +91,18 @@ export class FormDEPOSITOSComponent implements OnInit {
     return ({'id': this.idForm2.value, 'cuenta': this.cuentaForm.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')})
   }
   close(){
-    this.nombre = null;
+    this.nombreonl = null;
+    this.cantidadForm.reset();
+    this.cantidadForm.clearValidators();
+    this.cuentaForm.reset();
+    this.cuentaForm.clearValidators();
+    this.cuentaForm2.reset();
+    this.cuentaForm2.clearValidators();
     this.idForm2.reset()
     this.idForm2.clearValidators()
   }
-
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 }
