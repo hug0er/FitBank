@@ -1,8 +1,15 @@
 <div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
     <form>
-        <mat-form-field fxFlexFill>
+        <mat-form-field fxFlexFill *ngIf="internet.internet">
             <input appHighlight matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
             <mat-error *ngIf="idForm2.hasError('required')">
+                La identificacion es
+                <strong>requerida</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlexFill *ngIf="!internet.internet">
+            <input appHighlight matInput placeholder="Id del Socio" type="text" [formControl]="idForm">
+            <mat-error *ngIf="idForm.hasError('required')">
                 La identificacion es
                 <strong>requerida</strong>
             </mat-error>
@@ -20,23 +27,27 @@
         <mat-form-field *ngIf="!internet.internet" fxFlexFill>
             <input matInput placeholder="Cuenta" type="text" [formControl]="cuentaForm" name="cuenta">
         </mat-form-field>
-        <mat-form-field fxFlexFill>
+        <mat-form-field fxFlexFill *ngIf="internet.internet">
+            <input appHighlight matInput placeholder="Cantidad" type="text" [formControl]="cantidadForm2">
+        </mat-form-field>
+        <mat-form-field fxFlexFill *ngIf="!internet.internet">
             <input appHighlight matInput placeholder="Cantidad" type="text" [formControl]="cantidadForm">
         </mat-form-field>
     </form>
 </div>
-<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid && !nombreonl && internet.internet" class="float">
-    <button mat-fab (click)="campos()" class="myfloat" color="primary">
+<div div fxLayout="row" fxLayoutAlign="center start" class="float">
+    <button mat-fab (click)="campos()" class="myfloat" *ngIf="idForm2.valid && !nombreonl && internet.internet" color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>
-    <button mat-fab (click)="close()" class="myfloat" color="warn">
-        <mat-icon>cancel</mat-icon>
-    </button>
-</div>
-<div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm2.valid  && cantidadForm.valid && (cuentaForm.valid && !internet.internet || cuentaForm2.valid && internet.internet)" class="float">
-    <button mat-fab (click)="depositar()" class="myfloat" color="primary">
+
+    <button mat-fab (click)="depositar()" class="myfloat" *ngIf="idForm2.valid  && cantidadForm2.valid && cuentaForm2.valid && internet.internet && nombreonl" color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>
+
+    <button mat-fab (click)="depositar()" class="myfloat" *ngIf="idForm.valid  && cantidadForm.valid && cuentaForm.valid && !internet.internet " color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+
     <button mat-fab (click)="close()" class="myfloat" color="warn">
         <mat-icon>cancel</mat-icon>
     </button>

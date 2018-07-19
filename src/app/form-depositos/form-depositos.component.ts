@@ -37,7 +37,13 @@ export class FormDEPOSITOSComponent implements OnInit {
   idForm2 = new FormControl('', [
     Validators.required,
   ]);
+  idForm = new FormControl('', [
+    Validators.required,
+  ]);
   cantidadForm = new FormControl('', [
+    Validators.required,
+  ]);
+  cantidadForm2 = new FormControl('', [
     Validators.required,
   ]);
 
@@ -62,7 +68,7 @@ export class FormDEPOSITOSComponent implements OnInit {
 
   depositar(){
     if(navigator.onLine){
-      let envio = {'id': this.idForm2.value, 'cuenta': this.cuentaForm2.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')}
+      let envio = {'id': this.idForm2.value, 'cuenta': this.cuentaForm2.value, 'monto': this.cantidadForm2.value, 'usuario': localStorage.getItem('user')}
       this.api.postProvider('/sdeposit', localStorage.getItem('id_token'),envio).then((data: any) => {
         this.alerta.presentarAlerta("Transacción Exitosa")
       }, (err) =>{
@@ -88,18 +94,22 @@ export class FormDEPOSITOSComponent implements OnInit {
   }
   }
   generarJson(){
-    return ({'id': this.idForm2.value, 'cuenta': this.cuentaForm.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')})
+    return ({'id': this.idForm.value, 'cuenta': this.cuentaForm.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')})
   }
   close(){
     this.nombreonl = null;
     this.cantidadForm.reset();
     this.cantidadForm.clearValidators();
+    this.cantidadForm2.reset();
+    this.cantidadForm2.clearValidators();
     this.cuentaForm.reset();
     this.cuentaForm.clearValidators();
     this.cuentaForm2.reset();
     this.cuentaForm2.clearValidators();
-    this.idForm2.reset()
-    this.idForm2.clearValidators()
+    this.idForm2.reset();
+    this.idForm2.clearValidators();
+    this.idForm.reset();
+    this.idForm.clearValidators();
   }
   logout() {
     this.router.navigate(['']);
