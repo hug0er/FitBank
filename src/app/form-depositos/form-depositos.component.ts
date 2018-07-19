@@ -84,7 +84,7 @@ export class FormDEPOSITOSComponent implements OnInit {
       lista = JSON.stringify(lista)
     }
     localStorage.setItem('tareas',lista)
-    console.log(lista);
+    this.alerta.presentarAlerta('No está conectado a internet. Su solicitud se encuentra en Tareas Pendientes')
   }
   }
   generarJson(){
@@ -102,7 +102,6 @@ export class FormDEPOSITOSComponent implements OnInit {
     this.idForm2.clearValidators()
   }
   logout() {
-    localStorage.clear();
     this.router.navigate(['']);
   }
 }
