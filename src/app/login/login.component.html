@@ -4,13 +4,13 @@
     </div>
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Usuario" class="input" [formControl]="usernameFormControl" [(ngModel)]="usuario">
+            <input appHighlight matInput placeholder="Usuario" class="input" [formControl]="usernameFormControl" [(ngModel)]="usuario">
             <mat-error *ngIf="usernameFormControl.hasError('required')">
                 El usuario es <strong>requerido</strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="contrasena">
+            <input appHighlight matInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl" [(ngModel)]="contrasena">
             <mat-error *ngIf="passwordFormControl.hasError('required')">
                 La contraseña es <strong>requerida</strong>
             </mat-error>

@@ -2,6 +2,7 @@
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import {ApiService} from './api.service';
+import { HighlightDirective } from './highlight.directive';
 //angular
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -41,7 +42,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
   declarations: [
     AppComponent,
     routingComponents,
-    DialogoComponent
+    DialogoComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
