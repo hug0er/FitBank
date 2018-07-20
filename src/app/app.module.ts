@@ -22,8 +22,9 @@ import { Idioma} from './funciones/idioma';
 //hammer (movimiento tactil)
 import 'hammerjs'
 import {HammerGestureConfig,HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
-import {DialogoComponent} from './dialogo/dialogo.component'
-
+//dialogo
+import {DialogoComponent} from './dialogo/dialogo.component';
+import { DialogoSeguroComponent } from './dialogo-seguro/dialogo-seguro.component';
 
 
 declare var Hammer : any;
@@ -43,7 +44,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
     AppComponent,
     routingComponents,
     DialogoComponent,
-    HighlightDirective
+    HighlightDirective,
+    DialogoSeguroComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,6 @@ export class MyHammerConfig extends HammerGestureConfig  {
   ],
   providers: [ApiService, Servicios,Alerta, {provide : HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig}, internetComponent,Idioma],
   bootstrap: [AppComponent],
-  entryComponents : [DialogoComponent]
+  entryComponents : [DialogoComponent,DialogoSeguroComponent]
 }) 
 export class AppModule { }

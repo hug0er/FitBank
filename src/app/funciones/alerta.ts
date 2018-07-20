@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {MatDialog, MatDialogConfig} from '@angular/material'
 import { DialogoComponent } from '../dialogo/dialogo.component';
+import { DialogoSeguroComponent } from '../dialogo-seguro/dialogo-seguro.component';
+
 
 @Injectable()
 export class Alerta{
+    erase:boolean;
   
   constructor( private snackBar: MatSnackBar, private dialog : MatDialog ) {
 
@@ -37,6 +40,23 @@ export class Alerta{
         };
         
         this.dialog.open(DialogoComponent, dialogConfig)
+    }
+
+    generarDialogoSeguro(){
+        let dialogConfigSeguro= new MatDialogConfig();
+        dialogConfigSeguro.disableClose = true;
+        dialogConfigSeguro.autoFocus = true;
+
+        dialogConfigSeguro.data = {
+            id: 2,
+            erase:true
+        };
+        /* this.dialog.open(DialogoSeguroComponent, dialogConfigSeguro); */
+        const dialogRef=this.dialog.open(DialogoSeguroComponent, dialogConfigSeguro);
+        dialogRef.afterClosed().subscribe(data=>{
+            this.erase=data;
+        })
+        
     }
 
     cancelar(){
