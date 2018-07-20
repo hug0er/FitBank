@@ -30,22 +30,22 @@ export class FormDEPOSITOSComponent implements OnInit {
   ngOnInit() {
   }
   cuentaForm = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.pattern('^[0-9]*$')
   ]);
   cuentaForm2 = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.pattern('^[0-9]*$')
   ]);
   idForm2 = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.pattern('^[0-9]*$')
   ]);
   idForm = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.pattern('^[0-9]*$')
   ]);
   cantidadForm = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.pattern('^[0-9]*$')
   ]);
   cantidadForm2 = new FormControl('', [
-    Validators.required,
+    Validators.required,Validators.pattern('^[0-9]*$')
   ]);
 
   campos(){
