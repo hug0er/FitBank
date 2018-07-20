@@ -101,7 +101,10 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
       })
   }
   close(){
-
+    this.idForm2.reset();
+    this.nombreForm2.reset();
+    this.grupoForm2.reset();
+    this.productoForm2.reset();
   }
   logout() {
     this.router.navigate(['']);
