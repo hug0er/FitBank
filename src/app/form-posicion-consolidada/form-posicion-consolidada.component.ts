@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,OnInit, DoCheck, Input } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ApiService } from '../api.service'
@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './form-posicion-consolidada.component.html',
   styleUrls: ['./form-posicion-consolidada.component.css']
 })
-export class FormPOSICIONCONSOLIDADAComponent {
+export class FormPOSICIONCONSOLIDADAComponent implements DoCheck {
   nombre: string;
   datos: any;
   @Input() idiomas: any;
@@ -27,6 +27,16 @@ export class FormPOSICIONCONSOLIDADAComponent {
     this.intento = false
   }
   idForm = new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]*$')]);
+
+  ngDoCheck(){
+    if(this.alerta.erase){
+      this.datos = null
+      this.nombre = null
+      this.idForm.reset()
+      this.idForm.clearValidators()
+      this.alerta.erase=false;
+    }
+  }
 
   posicionConsolidada() {
     this.intento = true;
@@ -61,11 +71,7 @@ export class FormPOSICIONCONSOLIDADAComponent {
     }
   }
   close() {
-    this.datos = null
-    this.nombre = null
-    this.idForm.reset()
-    this.idForm.clearValidators()
-
+    this.alerta.generarDialogoSeguro();
   }
   logout() {
     localStorage.clear();
