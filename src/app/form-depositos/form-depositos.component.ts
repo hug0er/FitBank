@@ -61,7 +61,7 @@ export class FormDEPOSITOSComponent implements OnInit {
     let lista = [];
 
     for (let i=0;i<value.length;i++)
-    lista.push({"value": value[i].ccuenta, "viewValue": value[i].ccuenta}) 
+    lista.push({"value": value[i].ccuenta, "viewValue": value[i].etiqueta}) 
 
     return lista;
   }
