@@ -8,25 +8,38 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Nombre del Socio" type="text">
+            <input matInput placeholder="Nombre del Socio" type="text" [formControl]="nombreForm2">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <mat-select placeholder="Grupo del Producto">
+            <mat-select placeholder="Grupo del Producto" [formControl]="grupoForm2">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                     {{food.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <mat-select placeholder="Producto">
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
+            <mat-select placeholder="Producto" [formControl]="productoForm2">
+                <mat-option *ngFor="let producto of productos" [value]="producto.value">
+                    {{producto.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-
-        <button mat-button fxFlexFill> Cancelar</button>
-        <button mat-button fxFlexFill> Ingresar</button>
-
     </form>
+</div>
+<div div fxLayout="row" fxLayoutAlign="center start" class="float">
+    <button mat-fab (click)="campos()" class="myfloat" *ngIf="idForm2.valid && !nombreForm2.valid && internet.internet" color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+
+    <button mat-fab (click)="campos2()" class="myfloat" *ngIf="idForm2.valid && nombreForm2.valid && grupoForm2.valid && !productoForm2.valid" color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+
+    <button mat-fab (click)="enviar()" class="myfloat" *ngIf="idForm2.valid && nombreForm2.valid && grupoForm2.valid && productoForm2.valid" color="primary">
+        <mat-icon color="white">check_circle</mat-icon>
+    </button>
+
+    <button mat-fab (click)="close()" class="myfloat" color="warn">
+        <mat-icon>cancel</mat-icon>
+    </button>
 </div>
