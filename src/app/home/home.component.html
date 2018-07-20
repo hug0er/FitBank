@@ -39,8 +39,17 @@
                 </button>
                 <mat-menu #CerrarSesion="matMenu">
                     <button mat-menu-item (click)=logout()>{{idiomas.CerrarSesion}}</button>
-                    <button mat-menu-item (click)=espanol()>Español</button>
-                    <button mat-menu-item (click)=ingles()>English</button>
+                    <button mat-menu-item [matMenuTriggerFor]="Idioma">Idioma</button>
+                    <mat-menu #Idioma="matMenu">
+                        <button mat-menu-item (click)=espanol()>Español</button>
+                        <button mat-menu-item (click)=ingles()>English</button>
+                    </mat-menu>
+                    <button mat-menu-item [matMenuTriggerFor]="Fuente">Tamaño de Fuente</button>
+                    <mat-menu #Fuente="matMenu">
+                        <button mat-menu-item>Grande</button>
+                        <button mat-menu-item>Mediano</button>
+                        <button mat-menu-item>Normal</button>
+                    </mat-menu>
                 </mat-menu>
             </mat-toolbar>
             <mat-tab-group class="tabs" [class.offline]=!internet (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
