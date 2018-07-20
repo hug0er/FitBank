@@ -15,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FormDEPOSITOSComponent implements OnInit {
   internet: internetComponent;
+  idiomas: any;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
   nombreonl: string;
@@ -23,6 +24,7 @@ export class FormDEPOSITOSComponent implements OnInit {
   constructor( private api: ApiService,  public alerta: Alerta, private router: Router) { 
     this.internet = new internetComponent;
     this.foods =[];
+    this.idiomas = JSON.parse(localStorage.getItem('idioma'))
     console.log(this.foods)
   }
 

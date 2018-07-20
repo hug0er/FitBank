@@ -1,37 +1,35 @@
 <div class="example-form" fxLayout="column" fxLayoutAlign="start stretch">
     <form>
         <mat-form-field fxFlexFill *ngIf="internet.internet">
-            <input appHighlight matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
+            <input appHighlight matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm2">
             <mat-error *ngIf="idForm2.hasError('required')">
-                La identificacion es
-                <strong>requerida</strong>
+                {{idiomas.msjIdRequerido}}
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="!internet.internet">
-            <input appHighlight matInput placeholder="Id del Socio" type="text" [formControl]="idForm">
+            <input appHighlight matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm">
             <mat-error *ngIf="idForm.hasError('required')">
-                La identificacion es
-                <strong>requerida</strong>
+                {{idiomas.msjIdRequerido}}
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="internet.internet">
-            <input matInput placeholder="Nombre del Socio" disabled type="text" value={{nombreonl}}>
+            <input matInput placeholder={{idiomas.nombreSocio}} disabled type="text" value={{nombreonl}}>
         </mat-form-field>
         <mat-form-field *ngIf="internet.internet" fxFlexFill>
-            <mat-select placeholder="Cuenta" [formControl]="cuentaForm2">
+            <mat-select placeholder={{idiomas.Cuenta}} [formControl]="cuentaForm2">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                     {{food.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field *ngIf="!internet.internet" fxFlexFill>
-            <input matInput placeholder="Cuenta" type="text" [formControl]="cuentaForm" name="cuenta">
+            <input appHighlight matInput placeholder={{idiomas.Cuenta}} type="text" [formControl]="cuentaForm" name="cuenta">
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="internet.internet">
-            <input appHighlight matInput placeholder="Cantidad" type="text" [formControl]="cantidadForm2">
+            <input appHighlight matInput placeholder={{idiomas.Cantidad}} type="text" [formControl]="cantidadForm2">
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="!internet.internet">
-            <input appHighlight matInput placeholder="Cantidad" type="text" [formControl]="cantidadForm">
+            <input appHighlight matInput placeholder={{idiomas.Cantidad}} type="text" [formControl]="cantidadForm">
         </mat-form-field>
     </form>
 </div>

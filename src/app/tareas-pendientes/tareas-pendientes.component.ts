@@ -13,9 +13,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TareasPendientesComponent implements DoCheck {
   tareas: any;
+  idiomas: any;
 
   constructor(private api: ApiService, public alerta: Alerta, private router: Router) {
-
+    this.idiomas = JSON.parse(localStorage.getItem('idioma'))
   }
 
   ngDoCheck() {
