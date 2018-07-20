@@ -1,7 +1,7 @@
 <div class="example-form">
     <form>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm2">
+            <input matInput placeholder="Id del Socio" disabled="nombreForm2.valid" type="text" [formControl]="idForm2">
             <mat-error *ngIf="idForm2.hasError('required')">
                 La identificacion es
                 <strong>requerida</strong>
