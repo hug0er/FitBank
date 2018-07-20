@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { internetComponent } from '../funciones/internet';
@@ -14,8 +14,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./form-depositos.component.css']
 })
 export class FormDEPOSITOSComponent implements OnInit {
+  @Input() idiomas: any;
   internet: internetComponent;
-  idiomas: any;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
   nombreonl: string;
@@ -24,7 +24,6 @@ export class FormDEPOSITOSComponent implements OnInit {
   constructor( private api: ApiService,  public alerta: Alerta, private router: Router) { 
     this.internet = new internetComponent;
     this.foods =[];
-    this.idiomas = JSON.parse(localStorage.getItem('idioma'))
     console.log(this.foods)
   }
 

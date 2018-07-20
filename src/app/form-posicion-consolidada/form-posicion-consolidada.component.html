@@ -16,7 +16,7 @@
             <input matInput placeholder={{idiomas.nombreSocio}} type="text" disabled [(ngModel)]="nombre" name="nombre">
         </mat-form-field>
         <mat-progress-bar *ngIf=intento mode="indeterminate"></mat-progress-bar>
-        <app-generar-cartas *ngFor="let dato of datos" [dato]="dato" class="deb"></app-generar-cartas>
+        <app-generar-cartas *ngFor="let dato of datos" [idiomas]="idiomas" [dato]="dato" class="deb"></app-generar-cartas>
     </form>
 </div>
 <div div fxLayout="row" fxLayoutAlign="center start" *ngIf="idForm.valid" class="float">

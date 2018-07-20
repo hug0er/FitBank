@@ -55,7 +55,7 @@
             <mat-tab-group class="tabs" [class.offline]=!internet (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
                 <mat-tab label={{idiomas.PosicionConsolidada}}>
                     <div class="contenido" (swipe)="deslizar($event)">
-                        <app-form-posicion-consolidada></app-form-posicion-consolidada>
+                        <app-form-posicion-consolidada [idiomas]="idiomas"></app-form-posicion-consolidada>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.SaldoAhorros}}>
@@ -81,7 +81,7 @@
                 </mat-tab>
                 <mat-tab label={{idiomas.Depositos}}>
                     <div class="contenido" (swipe)="deslizar($event)">
-                        <app-form-depositos></app-form-depositos>
+                        <app-form-depositos [idiomas]="idiomas"></app-form-depositos>
                     </div>
                 </mat-tab>
                 <mat-tab label={{idiomas.Retiros}}>

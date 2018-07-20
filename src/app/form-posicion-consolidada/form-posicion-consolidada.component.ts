@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ApiService } from '../api.service'
@@ -16,7 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FormPOSICIONCONSOLIDADAComponent {
   nombre: string;
   datos: any;
-  idiomas: any;
+  @Input() idiomas: any;
   cedula: string;
   internet: internetComponent;
   intento: boolean;
@@ -24,7 +24,6 @@ export class FormPOSICIONCONSOLIDADAComponent {
     public alerta: Alerta,
     private router: Router) {
     this.internet = new internetComponent
-    this.idiomas = JSON.parse(localStorage.getItem('idioma'))
     this.intento = false
   }
   idForm = new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]*$')]);

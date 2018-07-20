@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GenerarCartasComponent implements OnInit {
   usuario = localStorage.getItem('user')
-  idiomas: any;
+  @Input() idiomas: any;
   @Input() dato
   constructor() { 
-    this.idiomas = JSON.parse(localStorage.getItem('idioma'))
+    
   }
 
   ngOnInit() {
