@@ -20,6 +20,7 @@ export class FormPOSICIONCONSOLIDADAComponent implements DoCheck {
   cedula: string;
   internet: internetComponent;
   intento: boolean;
+  eraseForm:boolean=false;
   constructor(public apiService: ApiService,
     public alerta: Alerta,
     private router: Router) {
@@ -29,12 +30,14 @@ export class FormPOSICIONCONSOLIDADAComponent implements DoCheck {
   idForm = new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]*$')]);
 
   ngDoCheck(){
-    if(this.alerta.erase){
+    this.eraseForm=this.alerta.erasePos;
+    if(this.eraseForm){
       this.datos = null
       this.nombre = null
       this.idForm.reset()
       this.idForm.clearValidators()
-      this.alerta.erase=false;
+      this.eraseForm=false;
+      this.alerta.erasePos=false;
     }
   }
 
@@ -71,7 +74,7 @@ export class FormPOSICIONCONSOLIDADAComponent implements DoCheck {
     }
   }
   close() {
-    this.alerta.generarDialogoSeguro();
+    this.alerta.generarDialogoSeguroPosicion();
   }
   logout() {
     localStorage.clear();

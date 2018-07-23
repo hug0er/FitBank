@@ -7,7 +7,8 @@ import { DialogoSeguroComponent } from '../dialogo-seguro/dialogo-seguro.compone
 
 @Injectable()
 export class Alerta{
-    erase:boolean;
+    erasePos:boolean=false;
+    eraseDep:boolean=false;
   
   constructor( private snackBar: MatSnackBar, private dialog : MatDialog ) {
 
@@ -42,19 +43,33 @@ export class Alerta{
         this.dialog.open(DialogoComponent, dialogConfig)
     }
 
-    generarDialogoSeguro(){
+    generarDialogoSeguroPosicion(){
         let dialogConfigSeguro= new MatDialogConfig();
         dialogConfigSeguro.disableClose = true;
         dialogConfigSeguro.autoFocus = true;
 
         dialogConfigSeguro.data = {
-            id: 2,
-            erase:true
+            id: 2
         };
         /* this.dialog.open(DialogoSeguroComponent, dialogConfigSeguro); */
         const dialogRef=this.dialog.open(DialogoSeguroComponent, dialogConfigSeguro);
         dialogRef.afterClosed().subscribe(data=>{
-            this.erase=data;
+            this.erasePos=data;
+        })
+        
+    }
+    generarDialogoSeguroDeposito(){
+        let dialogConfigSeguro= new MatDialogConfig();
+        dialogConfigSeguro.disableClose = true;
+        dialogConfigSeguro.autoFocus = true;
+
+        dialogConfigSeguro.data = {
+            id: 2
+        };
+        /* this.dialog.open(DialogoSeguroComponent, dialogConfigSeguro); */
+        const dialogRef=this.dialog.open(DialogoSeguroComponent, dialogConfigSeguro);
+        dialogRef.afterClosed().subscribe(data=>{
+            this.eraseDep=data;
         })
         
     }

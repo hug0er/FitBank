@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { internetComponent } from '../funciones/internet';
@@ -13,13 +13,14 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './form-depositos.component.html',
   styleUrls: ['./form-depositos.component.css']
 })
-export class FormDEPOSITOSComponent implements OnInit {
+export class FormDEPOSITOSComponent implements DoCheck {
   @Input() idiomas: any;
   internet: internetComponent;
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
   nombreonl: string;
   foods: any[];
+  eraseDepo:boolean;
 
   constructor( private api: ApiService,  public alerta: Alerta, private router: Router) { 
     this.internet = new internetComponent;
@@ -27,8 +28,6 @@ export class FormDEPOSITOSComponent implements OnInit {
     console.log(this.foods)
   }
 
-  ngOnInit() {
-  }
   cuentaForm = new FormControl('', [
     Validators.required,Validators.pattern('^[0-9]*$')
   ]);
@@ -47,6 +46,21 @@ export class FormDEPOSITOSComponent implements OnInit {
   cantidadForm2 = new FormControl('', [
     Validators.required,Validators.pattern('^[0-9]*$')
   ]);
+
+  ngDoCheck() {
+    this.eraseDepo=this.alerta.eraseDep;
+    if(this.eraseDepo){
+      this.nombreonl = null;
+      this.cantidadForm.reset();
+      this.cantidadForm2.reset();
+      this.cuentaForm.reset();
+      this.cuentaForm2.reset();
+      this.idForm2.reset();
+      this.idForm.reset();
+      this.eraseDepo=false;
+      this.alerta.eraseDep=false;
+    }
+  }
 
   campos(){
     this.api.postProvider('/cuentasCliente', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user')}).then(
@@ -98,13 +112,7 @@ export class FormDEPOSITOSComponent implements OnInit {
     return ({'id': this.idForm.value, 'cuenta': this.cuentaForm.value, 'monto': this.cantidadForm.value, 'usuario': localStorage.getItem('user')})
   }
   close(){
-    this.nombreonl = null;
-    this.cantidadForm.reset();
-    this.cantidadForm2.reset();
-    this.cuentaForm.reset();
-    this.cuentaForm2.reset();
-    this.idForm2.reset();
-    this.idForm.reset();
+    this.alerta.generarDialogoSeguroDeposito();
   }
   logout() {
     this.router.navigate(['']);

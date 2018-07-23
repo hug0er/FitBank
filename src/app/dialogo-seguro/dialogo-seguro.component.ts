@@ -8,17 +8,16 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
   styleUrls: ['./dialogo-seguro.component.css']
 })
 export class DialogoSeguroComponent implements OnInit {
-  er:boolean;
+  er:boolean=false;
   constructor(private dialogRef: MatDialogRef<DialogoSeguroComponent>, @Inject(MAT_DIALOG_DATA) data) { 
-    this.er=data.erase;
   }
 
   ngOnInit() {}
   accept(){
-    this.dialogRef.close(this.er);
+    this.dialogRef.close(this.er=true);
   }
   close() {
-    this.dialogRef.close(this.er=false);
+    this.dialogRef.close(this.er);
 }
   
 }
