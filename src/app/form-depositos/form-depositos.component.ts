@@ -100,17 +100,11 @@ export class FormDEPOSITOSComponent implements OnInit {
   close(){
     this.nombreonl = null;
     this.cantidadForm.reset();
-    this.cantidadForm.clearValidators();
     this.cantidadForm2.reset();
-    this.cantidadForm2.clearValidators();
     this.cuentaForm.reset();
-    this.cuentaForm.clearValidators();
     this.cuentaForm2.reset();
-    this.cuentaForm2.clearValidators();
     this.idForm2.reset();
-    this.idForm2.clearValidators();
     this.idForm.reset();
-    this.idForm.clearValidators();
   }
   logout() {
     this.router.navigate(['']);
