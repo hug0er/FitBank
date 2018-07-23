@@ -59,8 +59,18 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
       (data : any)=>{
         this.nombreForm2.setValue(data.clientName);
         this.api.postProvider('/productGroup', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user'), 'csubsystem': '04', 'cgrupoproducto': '', 'descripcion': ''}).then(
-          (data : any)=>{
-            this.foods = this.transformador(data.array);
+          (data1 : any)=>{
+            this.foods = this.transformador(data1.array);
+            localStorage.setItem('aperturaCuentas', JSON.stringify(data1.array))
+            console.log(data1.array[0]);
+            for (let i =0; i < data1.array.length; i++){
+              this.api.postProvider('/product', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user'), 'csubsystem': '04', 'cgrupoproducto': data1.array[i].cgrupoproducto}).then(
+                (data2 : any)=>{
+                  localStorage.setItem(data1.array[i].cgrupoproducto,JSON.stringify(data2.array))
+                }, (err)=>{
+                })
+            }
+            
           }, (err)=>{
           })
       }, (err)=>{
