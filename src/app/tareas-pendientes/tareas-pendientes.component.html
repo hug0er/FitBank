@@ -1,4 +1,5 @@
-<mat-card *ngFor="let tarea of tareas ; let i = index;">
+<div *ngFor="let tarea of tareas ; let i = index;">
+    <mat-card *ngIf="tarea.tipoDeposito">
         <mat-card-header>
             <mat-card-title>{{idiomas.Depositos}}</mat-card-title>
         </mat-card-header>
@@ -31,13 +32,60 @@
         <table>
             <td width="290px">
                 <button (click)="enviar(i)">
-                    <mat-icon color="white">send</mat-icon>
-                </button>
+                            <mat-icon color="white">send</mat-icon>
+                        </button>
             </td>
             <td>
                 <button (click)="cerrar(i)">
-                    <mat-icon color="white">close</mat-icon>
-                </button>
+                            <mat-icon color="white">close</mat-icon>
+                        </button>
             </td>
         </table>
     </mat-card>
+
+    <mat-card *ngIf="tarea.tipoCuentas">
+        <mat-card-header>
+            <mat-card-title>Apertura de Cuentas</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+                <tr height="25">
+                    <td>
+                        <strong>Id </strong>
+                    </td>
+                    <td>{{tarea.id}}</td>
+                </tr>
+                <tr height="25">
+                    <td>
+                        <strong>Nombre: </strong>
+                    </td>
+                    <td>
+                        {{tarea.cnombre}}
+                    </td>
+                </tr>
+                <tr height="25">
+                    <td>
+                        <strong>Grupo: </strong>
+                    </td>
+                    <td>
+                        {{tarea.cgrupoproducto}}
+                    </td>
+                </tr>
+                <tr height="25">
+                    <td>
+                        <strong>Producto: </strong>
+                    </td>
+                    <td>
+                        {{tarea.product}}
+                    </td>
+                </tr>
+            </table>
+        </mat-card-content>
+        <button (click)="enviarCCuentas(i)">
+                <mat-icon color="white">send</mat-icon>
+            </button>
+        <button (click)="cerrar(i)">
+                <mat-icon color="white">close</mat-icon>
+            </button>
+    </mat-card>
+</div>

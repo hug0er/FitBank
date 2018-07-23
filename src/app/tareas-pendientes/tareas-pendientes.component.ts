@@ -61,4 +61,26 @@ export class TareasPendientesComponent implements DoCheck {
     this.router.navigate(['']);
   }
 
+  enviarCCuentas(i){
+    let prueba = this.tareas
+    {
+      if (navigator.onLine) {
+        this.api.postProvider('/newAccount', localStorage.getItem('id_token'), this.tareas[i]).then((data: any) => {
+          prueba.splice(i, 1)
+          localStorage.setItem('tareas', JSON.stringify(prueba))
+          this.alerta.presentarAlerta("Transacción Exitosa")
+        }, (err) => {
+          if (err.error) {
+            this.alerta.presentarAlerta(err.error.mensajeUsuario)
+            if (err.error.mensaje == "Error de autenticación via token JWT.") { this.logout() }
+          }
+          else
+            this.alerta.presentarAlerta('Error con el Servidor')
+        })
+      }
+      else {
+        this.alerta.presentarAlerta('No hay conección ha internet')
+      }
+    }
+  }
 }

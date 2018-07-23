@@ -39,6 +39,18 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
   productoForm2 = new FormControl('', [
     Validators.required,
   ]);
+  idForm = new FormControl('', [
+    Validators.required,
+  ]);
+  nombreForm = new FormControl('', [
+    Validators.required,
+  ]);
+  grupoForm = new FormControl('', [
+    Validators.required,
+  ]);
+  productoForm = new FormControl('', [
+    Validators.required,
+  ]);
 
   campos(){
     console.log('campos')
@@ -77,6 +89,7 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
       })
   }
   enviar(){
+    if(navigator.onLine){
       this.api.postProvider('/newAccount', localStorage.getItem('id_token'), this.parametros() ).then((data: any) => {
         this.alerta.presentarAlerta("Cuenta creada con éxito")
       }, (err) =>{
@@ -87,7 +100,31 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
         else
           this.alerta.presentarAlerta('Error con el Servidor')
       })
+    }else{
+      let lista: any = localStorage.getItem('tareas')
+      if (!lista){
+        lista = '['+ JSON.stringify(this.generarJson())+']';
+      }else{
+      lista= JSON.parse(lista)
+      lista.push(this.generarJson())
+      lista = JSON.stringify(lista)
+    }
+    localStorage.setItem('tareas',lista)
+    this.alerta.presentarAlerta('No está conectado a internet. Su solicitud se encuentra en Tareas Pendientes')
   }
+  }
+  generarJson(){
+    return ({
+      'tipoCuentas' : "1",
+      'id': this.idForm.value, 
+        "cgrupoproducto": this.grupoForm.value, 
+        "product": this.productoForm.value,
+        "cnombre": this.nombreForm.value,
+        "accountexecutive":localStorage.getItem('user'),
+        "accountname": this.nombreForm.value,
+        "usuario": localStorage.getItem('user')})
+  }
+
   parametros(){
     return(
       { 
