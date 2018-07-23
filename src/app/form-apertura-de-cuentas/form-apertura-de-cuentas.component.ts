@@ -18,12 +18,15 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
   foods: any[];
   @Input() idiomas: any;
   productos: any[];
+  grupoOffline: any[];
+  productosOffline: any[];
 
 
   constructor(private api: ApiService,  public alerta: Alerta, private router: Router) { 
     this.internet = new internetComponent;
     this.foods =[];
     this.productos =[];
+    this.grupoOffline = this.transformador(JSON.parse(localStorage.getItem('aperturaCuentas')));
   }
 
   ngOnInit() {
@@ -53,6 +56,9 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
     Validators.required,
   ]);
 
+  guardar(){
+
+  }
   campos(){
     console.log('campos')
     this.api.postProvider('/cuentasCliente', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user')}).then(
@@ -61,13 +67,15 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
         this.api.postProvider('/productGroup', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user'), 'csubsystem': '04', 'cgrupoproducto': '', 'descripcion': ''}).then(
           (data1 : any)=>{
             this.foods = this.transformador(data1.array);
-            localStorage.setItem('aperturaCuentas', JSON.stringify(data1.array))
+            localStorage.setItem('aperturaCuentas', JSON.stringify(data1.array));
+            this.grupoOffline = this.transformador(JSON.parse(localStorage.getItem('aperturaCuentas')));
             console.log(data1.array[0]);
             for (let i =0; i < data1.array.length; i++){
               this.api.postProvider('/product', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user'), 'csubsystem': '04', 'cgrupoproducto': data1.array[i].cgrupoproducto}).then(
                 (data2 : any)=>{
                   localStorage.setItem(data1.array[i].cgrupoproducto,JSON.stringify(data2.array))
-                }, (err)=>{
+                },(err)=>{
+                  console.log(err);
                 })
             }
             
@@ -77,20 +85,24 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
       })
   }
   transformador(value){
-    let lista = [];
+    if (value){
+      let lista = [];
 
-    for (let i=0;i<value.length;i++)
-    lista.push({"value": value[i].cgrupoproducto, "viewValue": value[i].descripcion}) 
-
-    return lista;
+      for (let i=0;i<value.length;i++)
+      lista.push({"value": value[i].cgrupoproducto, "viewValue": value[i].descripcion}) 
+  
+      return lista;
+    }  
   }
   transformador2(value){
+    if (value){
     let lista = [];
 
     for (let i=0;i<value.length;i++)
     lista.push({"value": value[i].cproducto, "viewValue": value[i].descripcion}) 
 
     return lista;
+    }
   }
   campos2(){
     this.api.postProvider('/product', localStorage.getItem('id_token'), {'id':this.idForm2.value,'usuario': localStorage.getItem('user'), 'csubsystem': '04', 'cgrupoproducto': this.grupoForm2.value}).then(
@@ -156,5 +168,8 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
   }
   logout() {
     this.router.navigate(['']);
+  }
+  llenar(value){
+    this.productosOffline = this.transformador2(JSON.parse(localStorage.getItem(value)))
   }
 }
