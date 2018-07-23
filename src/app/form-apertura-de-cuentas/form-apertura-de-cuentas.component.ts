@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { internetComponent } from '../funciones/internet';
@@ -16,6 +16,7 @@ export class FormAPERTURADECUENTASComponent implements OnInit {
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
   foods: any[];
+  @Input() idiomas: any;
   productos: any[];
 
 

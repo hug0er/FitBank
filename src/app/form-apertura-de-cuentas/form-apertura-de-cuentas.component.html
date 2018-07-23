@@ -1,24 +1,23 @@
 <div class="example-form">
     <form *ngIf="internet.internet">
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Id del Socio" disabled="nombreForm2.valid" type="text" [formControl]="idForm2">
+            <input appHighlight matInput placeholder={{idiomas.idSocio}} disabled="nombreForm2.valid" type="text" [formControl]="idForm2">
             <mat-error *ngIf="idForm2.hasError('required')">
-                La identificacion es
-                <strong>requerida</strong>
+                {{idiomas.msjIdRequerido}}
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <input matInput placeholder="Nombre del Socio" disabled type="text" [formControl]="nombreForm2">
+            <input appHighlight matInput placeholder={{idiomas.nombreSocio}} disabled type="text" [formControl]="nombreForm2">
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <mat-select placeholder="Grupo del Producto" [formControl]="grupoForm2">
+            <mat-select placeholder={{idiomas.GrupoProducto}} [formControl]="grupoForm2">
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                     {{food.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field fxFlexFill>
-            <mat-select placeholder="Producto" [formControl]="productoForm2">
+            <mat-select placeholder={{idiomas.Producto}} [formControl]="productoForm2">
                 <mat-option *ngFor="let producto of productos" [value]="producto.value">
                     {{producto.viewValue}}
                 </mat-option>
@@ -27,28 +26,27 @@
     </form>
     <form *ngIf="!internet.internet">
         <mat-form-field fxFlexFill *ngIf="!internet.internet">
-            <input matInput placeholder="Id del Socio" type="text" [formControl]="idForm">
+            <input appHighlight matInput placeholder={{idiomas.idSocio}} type="text" [formControl]="idForm">
             <mat-error *ngIf="idForm.hasError('required')">
-                La identificacion es
-                <strong>requerida</strong>
+                {{idiomas.msjIdRequerido}}
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="!internet.internet">
-            <input matInput placeholder="Nombre del Socio" type="text" [formControl]="nombreForm">
+            <input appHighlight matInput placeholder={{idiomas.nombreSocio}} type="text" [formControl]="nombreForm">
             <mat-error *ngIf="nombreForm.hasError('required')">
                 El nombre es
                 <strong>requerido</strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="!internet.internet">
-            <input matInput placeholder="Grupo" type="text" [formControl]="grupoForm">
+            <input appHighlight matInput placeholder={{idiomas.GrupoProducto}} type="text" [formControl]="grupoForm">
             <mat-error *ngIf="grupoForm.hasError('required')">
                 El grupo es
                 <strong>requerido</strong>
             </mat-error>
         </mat-form-field>
         <mat-form-field fxFlexFill *ngIf="!internet.internet">
-            <input matInput placeholder=Producto type="text" [formControl]="productoForm">
+            <input appHighlight matInput placeholder={{idiomas.Producto}} type="text" [formControl]="productoForm">
             <mat-error *ngIf="productoForm.hasError('required')">
                 El producto es
                 <strong>requerido</strong>
@@ -61,15 +59,18 @@
         <mat-icon color="white">check_circle</mat-icon>
     </button>
 
-    <button mat-fab (click)="campos2()" class="myfloat" *ngIf="idForm2.valid && nombreForm2.valid && grupoForm2.valid && !productoForm2.valid && internet.internet" color="primary">
+    <button mat-fab (click)="campos2()" class="myfloat" *ngIf="idForm2.valid && nombreForm2.valid && grupoForm2.valid && !productoForm2.valid && internet.internet"
+        color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>
 
-    <button mat-fab (click)="enviar()" class="myfloat" *ngIf="idForm2.valid && nombreForm2.valid && grupoForm2.valid && productoForm2.valid && internet.internet" color="primary">
+    <button mat-fab (click)="enviar()" class="myfloat" *ngIf="idForm2.valid && nombreForm2.valid && grupoForm2.valid && productoForm2.valid && internet.internet"
+        color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>
 
-    <button mat-fab (click)="enviar()" class="myfloat" *ngIf="idForm.valid && nombreForm.valid && grupoForm.valid && productoForm.valid && !internet.internet" color="primary">
+    <button mat-fab (click)="enviar()" class="myfloat" *ngIf="idForm.valid && nombreForm.valid && grupoForm.valid && productoForm.valid && !internet.internet"
+        color="primary">
         <mat-icon color="white">check_circle</mat-icon>
     </button>
 
